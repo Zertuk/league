@@ -1,6 +1,6 @@
 var summonerName = "";
 var summonerId = "";
-var apiKey = "";
+var apiKey = "85df569c-14df-466c-966b-81f186ed0940";
 
 
 
@@ -31,12 +31,10 @@ function summonerLookUp() {
 		}
 	})
 }
-
+var testage;
 function creepScoreLookUp() {
-	var creepScore = "";
-
 	$.ajax({
-		url: 'https://na.api.pvp.net/api/lol/na/v2.2/matchhistory/' + summonerId + '?api_key=' + apiKey,
+		url: 'https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/' + summonerId + '/recent' + '?api_key=' + apiKey,
 		type: 'GET',
 		dataType: 'json',
 		data: {
@@ -44,10 +42,8 @@ function creepScoreLookUp() {
 		},
 
 		success: function(json) {
-			creepscore = json[summonerId].stats;
-			// creepScore = json['matches'][0].participants.stats.minionsKilled + json['matches'][0].participants.stats.neutralMinionsKilled;
-
-			console.log(creepScore);
+			testage = json;
+			console.log('yay');
 		},
 
 		error: function(XMLHttpRequest, testStatus, errorThrown) {
