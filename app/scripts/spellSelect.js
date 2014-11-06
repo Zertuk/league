@@ -12,6 +12,8 @@ function spellSelect(id) {
 		break;
 		case 4: return "Flash"
 		break;
+		case 7: return "Heal"
+		break;
 
 	}
 }

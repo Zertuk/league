@@ -32,31 +32,32 @@
       </form>
     </div>
     <div class = "container">
-      <div class = "gameInfo" ng-repeat = "game in gameInfo">
+      <div style = "background-color: {{game.color}}" class = "gameInfo" ng-repeat = "game in gameInfo">
         <div class = "championInfo">
-          <img class = "champImage" ng-src = "{{game.champImages}}"></img>
-          <img class = "summonerSpell" ng-src = "{{game.spellImages[0]}}"></img>
-          <img class = "summonerSpell" ng-src = "{{game.spellImages[1]}}"></img>
+          <img title = "{{game.champNames}}" class = "champImage" ng-src = "{{game.champImages}}"></img>
+          <img title = "{{game.spellNames[0]}}" class = "summonerSpell" ng-src = "{{game.spellImages[0]}}"></img>
+          <img title = "{{game.spellNames[1]}}" class = "summonerSpell" ng-src = "{{game.spellImages[1]}}"></img>
         
-          <div class = "statInfo">
+          <div class = "statInfo inline">
             <p class = "kill inline">{{game.stats.championsKilled}}</p>
             <p class = "inline">/</p>
             <p class = "death inline">{{game.stats.numDeaths}}</p>
             <p class = "inline">/</p>
             <p class = "assist inline">{{game.stats.assists}}</p>
           </div>
-          
+          <p class = "cs inline">{{game.stats.minionsKilled + game.stats.neutralMinionsKilled}} cs</p>
+
         </div>
 
 
         <div class = "itemInfo">
-          <p class = "item">{{game.stats.item0}}</p>
-          <p class = "item">{{game.stats.item1}}</p>
-          <p class = "item">{{game.stats.item2}}</p>
-          <p class = "item">{{game.stats.item3}}</p>
-          <p class = "item">{{game.stats.item4}}</p>
-          <p class = "item">{{game.stats.item5}}</p>
-          <p class = "item">{{game.stats.item6}}</p>
+          <img class = "item" ng-src = "images/item/{{game.stats.item0}}.png"></img>
+          <img class = "item" ng-src = "images/item/{{game.stats.item1}}.png"></img>
+          <img class = "item" ng-src = "images/item/{{game.stats.item2}}.png"></img>
+          <img class = "item trinket" ng-src = "images/item/{{game.stats.item6}}.png"></img>
+          <img class = "item" ng-src = "images/item/{{game.stats.item3}}.png"></img>
+          <img class = "item" ng-src = "images/item/{{game.stats.item4}}.png"></img>
+          <img class = "item" ng-src = "images/item/{{game.stats.item5}}.png"></img>
       </div>
     </div>
 

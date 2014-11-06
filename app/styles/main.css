@@ -31,6 +31,7 @@ body {
 
 .statInfo {
   margin-left: 15px; 
+  width: 100px;
 }
 
 .kill {
@@ -45,9 +46,27 @@ body {
   color: orange;
 }
 
+.cs {
+  margin-left: 10px;
+}
+
 
 .item {
+  border-radius: 5px;
+  width: 40px;
+  margin: 1px;
+}
+
+.trinket {
+  width: 35px;
+
+}
+.itemInfo {
   float: right;
+  width: 185px;
+  height: 100px;
+  margin-top: -100px;
+  margin-right: 350px; 
 }
 .inline {
   display: inline;

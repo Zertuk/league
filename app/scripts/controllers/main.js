@@ -14,6 +14,7 @@ var champNames = [];
 var champImages = [];
 var spellNames = [];
 var spellImages = [];
+var teamColor = [];
 
 
 angular.module('leagueApp')
@@ -44,6 +45,7 @@ angular.module('leagueApp')
 			console.log($scope.gameInfo);
 			$scope.championIdNameMap(gameInfo);
 			$scope.spellIdNameMap(gameInfo);
+			$scope.teamColor(gameInfo);
 		}).
 		error (function() {
 			alert('not ok');
@@ -66,10 +68,19 @@ angular.module('leagueApp')
 			$scope.gameInfo[i].spellNames = spellNames[i];
 			spellImages[i] = ['/images/spells/' + spellNames[i][0] + '.png' , '/images/spells/' + spellNames[i][1] + '.png']
 			$scope.gameInfo[i].spellImages = spellImages[i];
+			$scope.gameInfo[i].itemName = "/images/item/" + data[i].stats.item0 + ".png";
 		}
 	}
+	$scope.teamColor = function(data) {
+		for (var i = 0; i < 10; i++) {
+			if (data[i].stats.win != true) {
+				teamColor[i] = '#f47979';
+			}
+			else {
+				teamColor[i] = '#bddfeb';
+			}
 
-
-
-
+			$scope.gameInfo[i].color = teamColor[i];
+		}
+	}
   });
