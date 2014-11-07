@@ -31,7 +31,7 @@
         </div>
       </form>
     </div>
-    <div class = "container">
+    <div class = "container main" ng-cloak>
       <div style = "background-color: {{game.color}}" class = "gameInfo" ng-repeat = "game in gameInfo">
         <div class = "championInfo">
           <img title = "{{game.champNames}}" class = "champImage" ng-src = "{{game.champImages}}"></img>
@@ -45,8 +45,6 @@
             <p class = "inline">/</p>
             <p class = "assist inline">{{game.stats.assists}}</p>
           </div>
-          <p class = "cs inline">{{game.stats.minionsKilled + game.stats.neutralMinionsKilled}} cs</p>
-
         </div>
 
 
@@ -58,6 +56,48 @@
           <img class = "item" ng-src = "images/item/{{game.stats.item3}}.png"></img>
           <img class = "item" ng-src = "images/item/{{game.stats.item4}}.png"></img>
           <img class = "item" ng-src = "images/item/{{game.stats.item5}}.png"></img>
+        </div>
+
+        <div class = "goldInfo">
+          <p class = "gold">{{game.stats.goldEarned}} Gold</p>
+          <p class = "cs">{{game.stats.minionsKilled + game.stats.neutralMinionsKilled}} Creeps</p>
+        </div>
+
+
+      <div class = "enemyTeamInfo">
+        <div class = "member">
+          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
+        </div>
+        <div class = "member">
+          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
+        </div>
+        <div class = "member">
+          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
+        </div>
+        <div class = "member">
+          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
+        </div>
+        <div class = "member">
+          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
+        </div>
+      </div>
+
+      <div class = "teamInfo">
+        <div class = "member">
+          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
+        </div>
+        <div class = "member">
+          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
+        </div>
+        <div class = "member">
+          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
+        </div>
+        <div class = "member">
+          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
+        </div>
+        <div class = "member">
+          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
+        </div>
       </div>
     </div>
 

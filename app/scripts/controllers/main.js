@@ -15,6 +15,8 @@ var champImages = [];
 var spellNames = [];
 var spellImages = [];
 var teamColor = [];
+var teamChamps = [];
+var teamNames = [];
 
 
 angular.module('leagueApp')
@@ -46,6 +48,8 @@ angular.module('leagueApp')
 			$scope.championIdNameMap(gameInfo);
 			$scope.spellIdNameMap(gameInfo);
 			$scope.teamColor(gameInfo);
+			$scope.itemFix(gameInfo);
+			$scope.teamChampMap(gameInfo);
 		}).
 		error (function() {
 			alert('not ok');
@@ -54,11 +58,15 @@ angular.module('leagueApp')
 
 	$scope.championIdNameMap = function(data) {
 		for (var i = 0; i < 10; i++) {
+			// for (var j = 0; j < 10; j++) {
+   //      		teamChamps[i] = data[i].fellowPlayers[j].championId;
+   //      	}
         	champNames[i] = champSelect(data[i].championId);
         	$scope.gameInfo[i].champNames = champNames[i];
         	champImages[i] = '/images/champion/' + champNames[i] + '.png'
         	$scope.gameInfo[i].champImages = champImages[i];
         	console.log($scope.gameInfo[i].champImages);
+        	
         }
 	};
 
@@ -71,6 +79,14 @@ angular.module('leagueApp')
 			$scope.gameInfo[i].itemName = "/images/item/" + data[i].stats.item0 + ".png";
 		}
 	}
+	$scope.teamChampMap = function(data) {
+		for (var i = 0; i < 10; i++) {
+			teamChamps[i] = [data[i].fellowPlayers[0].championId, data[i].fellowPlayers[1].championId, data[i].fellowPlayers[2].championId, data[i].fellowPlayers[3].championId, data[i].fellowPlayers[4].championId, data[i].fellowPlayers[5].championId, data[i].fellowPlayers[6].championId, data[i].fellowPlayers[7].championId, data[i].fellowPlayers[8].championId];
+			for (var j = 0; j < 10; j++) {
+				teamNames  = champSelect(teamChamps[i][j]);
+			}
+		}
+	}
 	$scope.teamColor = function(data) {
 		for (var i = 0; i < 10; i++) {
 			if (data[i].stats.win != true) {
@@ -81,6 +97,32 @@ angular.module('leagueApp')
 			}
 
 			$scope.gameInfo[i].color = teamColor[i];
+		}
+	}
+	$scope.itemFix = function(data) {
+		for (var i = 0; i < 10; i++) {
+			if (data[i].stats.item0 == undefined) {
+				data[i].stats.item0 = 'empty';
+			}
+			if (data[i].stats.item1 == undefined) {
+				data[i].stats.item1 = 'empty';
+			}
+			if (data[i].stats.item2 == undefined) {
+				data[i].stats.item2 = 'empty';
+			}
+			if (data[i].stats.item3 == undefined) {
+				data[i].stats.item3 = 'empty';
+			}
+			if (data[i].stats.item4 == undefined) {
+				data[i].stats.item4 = 'empty';
+			}
+			if (data[i].stats.item5 == undefined) {
+				data[i].stats.item5 = 'empty';
+			}
+			if (data[i].stats.item6 == undefined) {
+				data[i].stats.item6 = 'empty';
+			}
+			console.log(data[i].stats.item5)
 		}
 	}
   });
