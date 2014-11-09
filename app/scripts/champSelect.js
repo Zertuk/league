@@ -1,7 +1,5 @@
 function champSelect(id) {
 	switch(parseInt(id)) {
-		default: return "N/A"
-		break;
 		case 1: return "Annie"
 		break;
 		case 2: return "Olaf"
@@ -238,7 +236,11 @@ function champSelect(id) {
 		break;
 		case 266: return "Aatrox"
 		break;
+		case 267: return "Nami"
+		break;
 		case 268: return "Azir"
+		break;
+		case 412: return "Thresh"
 		break;
 	}
 }
