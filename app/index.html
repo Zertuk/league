@@ -65,10 +65,11 @@
 
 
       <div class = "enemyTeamInfo">
-        <div class = "member">
-          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
+        <div ng-repeat = "player in game.fellowPlayers.teamChamps track by $index" class = "member">
+          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">{{player}}</p>
         </div>
-        <div class = "member">
+
+<!--         <div class = "member">
           <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
         </div>
         <div class = "member">
@@ -97,7 +98,7 @@
         </div>
         <div class = "member">
           <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
-        </div>
+        </div> -->
       </div>
     </div>
 
