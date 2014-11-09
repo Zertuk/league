@@ -17,6 +17,7 @@ var spellImages = [];
 var teamColor = [];
 var teamChamps = [];
 var teamNames = [];
+var testingHere;
 
 
 angular.module('leagueApp')
@@ -80,11 +81,13 @@ angular.module('leagueApp')
 		}
 	}
 	$scope.teamChampMap = function(data) {
-		for (var i = 0; i < 10; i++) {
-			teamChamps[i] = [data[i].fellowPlayers[0].championId, data[i].fellowPlayers[1].championId, data[i].fellowPlayers[2].championId, data[i].fellowPlayers[3].championId, data[i].fellowPlayers[4].championId, data[i].fellowPlayers[5].championId, data[i].fellowPlayers[6].championId, data[i].fellowPlayers[7].championId, data[i].fellowPlayers[8].championId];
-			for (var j = 0; j < 10; j++) {
-				teamNames  = champSelect(teamChamps[i][j]);
+		for (var j = 0; j < 10; j++) {
+			for (var i = 0; i < 9; i++) {
+				teamChamps[i] = champSelect(data[j].fellowPlayers[i].championId);
+				data[j].fellowPlayers.teamChamps = teamChamps;
+
 			}
+			teamChamps = [];
 		}
 	}
 	$scope.teamColor = function(data) {
