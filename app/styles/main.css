@@ -43,7 +43,9 @@ body {
   float: right;
   margin-top: -105px;
   margin-right: 10px;
-  background-color: #aac8d3;
+  background-color: #ecebeb;
+  border: 1px solid black;
+  border-radius: 2px;
 }
 
 .enemyTeamInfo {
@@ -52,7 +54,9 @@ body {
   float: right;
   margin-top: -105px;
   margin-right: 10px;
-  background-color: #aac8d3;
+  background-color: #ecebeb;
+  border: 1px solid black;
+  border-radius: 2px;
 }
 
 .teamImage {
@@ -68,6 +72,12 @@ body {
 .member {
   display: block;
   margin-left: 5px;
+}
+
+.championStats {
+  height: 125px;
+  background-color: grey;
+  margin-bottom: 5px;
 }
 
 .main {

@@ -20,6 +20,7 @@ var teamNames = [];
 var enemyChamps = [];
 var itemInfo = [];
 var testingHere;
+var statInfo = [];
 
 
 angular.module('leagueApp')
@@ -53,11 +54,24 @@ angular.module('leagueApp')
 			$scope.teamColor(gameInfo);
 			$scope.itemFix(gameInfo);
 			$scope.teamChampMap(gameInfo);
+			$scope.statLookUp();
 		}).
 		error (function() {
 			alert('not ok');
 		})
 	};
+
+	$scope.statLookUp = function() {
+		$http.get('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + summonerId + '/ranked?season=SEASON4&api_key=' + apiKey).
+		success (function(json) {
+			statInfo = json;
+			$scope.gameInfo.statInfo = statInfo;
+
+		}).
+		error (function() {
+			alert('not ok');
+		})
+	}
 
 	$scope.championIdNameMap = function(data) {
 		for (var i = 0; i < 10; i++) {
@@ -69,6 +83,8 @@ angular.module('leagueApp')
         	champImages[i] = '/images/champion/' + champNames[i] + '.png'
         	$scope.gameInfo[i].champImages = champImages[i];
         	console.log($scope.gameInfo[i].champImages);
+        	$scope.gameInfo[i].toolTip = '<div class = "itemToolTip"><p class = "itemName">{{itemInfo.name}}</p><p class = "itemDescription" ng-bind-html = "itemInfo.description"></p><p class = "itemText">{{itemInfo.plaintext}}</p></div>';
+
         	
         }
 	};
@@ -151,9 +167,6 @@ angular.module('leagueApp')
 			console.log(json);
 			itemInfo = json;
 			$scope.itemInfo = itemInfo;
-			$scope.x = event.offsetX-50;
-            $scope.y = event.offsetY-50;
-            console.log($scope.x);
 		}).
 		error (function() {
 			alert('not ok');
