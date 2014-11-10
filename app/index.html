@@ -31,6 +31,9 @@
         </div>
       </form>
     </div>
+    {{itemInfo.name}}
+    <p ng-bind-html = "itemInfo.description"></p>
+    {{itemInfo.plaintext}}
     <div class = "container main" ng-cloak>
       <div style = "background-color: {{game.color}}" class = "gameInfo" ng-repeat = "game in gameInfo">
         <div class = "championInfo">
@@ -49,13 +52,13 @@
 
 
         <div class = "itemInfo">
-          <img class = "item" ng-src = "images/item/{{game.stats.item0}}.png"></img>
-          <img class = "item" ng-src = "images/item/{{game.stats.item1}}.png"></img>
-          <img class = "item" ng-src = "images/item/{{game.stats.item2}}.png"></img>
-          <img class = "item trinket" ng-src = "images/item/{{game.stats.item6}}.png"></img>
-          <img class = "item" ng-src = "images/item/{{game.stats.item3}}.png"></img>
-          <img class = "item" ng-src = "images/item/{{game.stats.item4}}.png"></img>
-          <img class = "item" ng-src = "images/item/{{game.stats.item5}}.png"></img>
+          <img ng-mouseover = "itemInfo(game.stats.item0)" class = "item" ng-src = "images/item/{{game.stats.item0}}.png"></img>
+          <img ng-mouseover = "itemHover()" class = "item" ng-src = "images/item/{{game.stats.item1}}.png"></img>
+          <img ng-mouseover = "itemHover()" class = "item" ng-src = "images/item/{{game.stats.item2}}.png"></img>
+          <img ng-mouseover = "itemHover()" class = "item trinket" ng-src = "images/item/{{game.stats.item6}}.png"></img>
+          <img ng-mouseover = "itemHover()" class = "item" ng-src = "images/item/{{game.stats.item3}}.png"></img>
+          <img ng-mouseover = "itemHover()" class = "item" ng-src = "images/item/{{game.stats.item4}}.png"></img>
+          <img ng-mouseover = "itemHover()" class = "item" ng-src = "images/item/{{game.stats.item5}}.png"></img>
         </div>
 
         <div class = "goldInfo">
@@ -64,10 +67,17 @@
         </div>
 
 
-      <div class = "enemyTeamInfo">
+      <div class = "teamInfo">
         <div ng-repeat = "player in game.fellowPlayers.teamChamps track by $index" class = "member">
-          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">{{player}}</p>
+          <img class = "teamImage" src = "/images/champion/{{player}}.png"></img><p class = "team">{{player}}</p>
         </div>
+      </div>
+
+      <div class = "enemyTeamInfo">
+        <div ng-repeat = "player in game.fellowPlayers.enemyChamps track by $index" class = "member">
+          <img class = "teamImage" ng-src = "/images/champion/{{player}}.png"></img><p class = "team">{{player}}</p>
+        </div>
+      </div>
 
 <!--         <div class = "member">
           <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
@@ -99,7 +109,6 @@
         <div class = "member">
           <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
         </div> -->
-      </div>
     </div>
 
 

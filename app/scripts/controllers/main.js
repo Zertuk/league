@@ -17,6 +17,8 @@ var spellImages = [];
 var teamColor = [];
 var teamChamps = [];
 var teamNames = [];
+var enemyChamps = [];
+var itemInfo = [];
 var testingHere;
 
 
@@ -51,6 +53,7 @@ angular.module('leagueApp')
 			$scope.teamColor(gameInfo);
 			$scope.itemFix(gameInfo);
 			$scope.teamChampMap(gameInfo);
+			$scope.itemInfo();
 		}).
 		error (function() {
 			alert('not ok');
@@ -82,11 +85,23 @@ angular.module('leagueApp')
 	}
 	$scope.teamChampMap = function(data) {
 		for (var j = 0; j < 10; j++) {
+			teamChamps[0] = champSelect(data[j].championId);
+			var k = 1;
+			var l = 0;
 			for (var i = 0; i < 9; i++) {
-				teamChamps[i] = champSelect(data[j].fellowPlayers[i].championId);
+				if (data[j].fellowPlayers[i].teamId == data[j].teamId) {
+					teamChamps[k] = champSelect(data[j].fellowPlayers[i].championId);
+					k++;
+				}
+				else {
+					enemyChamps[l] = champSelect(data[j].fellowPlayers[i].championId);
+					l++;
+				}
+				
 				data[j].fellowPlayers.teamChamps = teamChamps;
-
+				data[j].fellowPlayers.enemyChamps = enemyChamps;
 			}
+			enemyChamps = [];
 			teamChamps = [];
 		}
 	}
@@ -127,5 +142,16 @@ angular.module('leagueApp')
 			}
 			console.log(data[i].stats.item5)
 		}
+	}
+	$scope.itemInfo = function(data) {
+		$http.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/item/' + 1001 + '?api_key=' + apiKey).
+		success (function(json) {
+			console.log(json);
+			itemInfo = json;
+			$scope.itemInfo = itemInfo;
+		}).
+		error (function() {
+			alert('not ok');
+		})
 	}
   });
