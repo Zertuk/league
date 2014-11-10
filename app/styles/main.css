@@ -5,6 +5,38 @@ body {
   background-color: #ececec;
 }
 
+.itemToolTip {
+  background-color: darkblue;
+  width: 300px;
+  height: auto;
+  opacity: 0.75;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+
+.itemName {
+  font-weight: bold;
+  color: magenta;
+  font-size: 14px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.itemText {
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: white;
+}
+
+.itemDescription {
+  margin-right: 10px;
+  margin-left: 10px;
+  color: white;
+}
+
+
 .teamInfo {
   width: 125px;
   height: 110px;

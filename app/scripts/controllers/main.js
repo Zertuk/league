@@ -53,7 +53,6 @@ angular.module('leagueApp')
 			$scope.teamColor(gameInfo);
 			$scope.itemFix(gameInfo);
 			$scope.teamChampMap(gameInfo);
-			$scope.itemInfo();
 		}).
 		error (function() {
 			alert('not ok');
@@ -143,15 +142,26 @@ angular.module('leagueApp')
 			console.log(data[i].stats.item5)
 		}
 	}
-	$scope.itemInfo = function(data) {
-		$http.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/item/' + 1001 + '?api_key=' + apiKey).
+	$scope.itemHover = function(item) {
+		if (item == 'empty') {
+			return;
+		}
+		$http.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/item/' + item + '?api_key=' + apiKey).
 		success (function(json) {
 			console.log(json);
 			itemInfo = json;
 			$scope.itemInfo = itemInfo;
+			$scope.x = event.offsetX-50;
+            $scope.y = event.offsetY-50;
+            console.log($scope.x);
 		}).
 		error (function() {
 			alert('not ok');
 		})
+	}
+	$scope.itemLeave = function() {
+		// itemInfo = [];
+		// $scope.itemInfo = itemInfo;
+		console.log('OK');
 	}
   });
