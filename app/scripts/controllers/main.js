@@ -65,7 +65,20 @@ angular.module('leagueApp')
 		$http.get('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + summonerId + '/ranked?season=SEASON4&api_key=' + apiKey).
 		success (function(json) {
 			statInfo = json;
-			$scope.gameInfo.statInfo = statInfo;
+			var i = 0;
+			while (statInfo.champions[i].id != undefined) {
+				i = i + 1;
+				if (statInfo.champions[i] === undefined) {
+					statInfo.champions[0].champName = champSelect(statInfo.champions[0].id);
+					$scope.gameInfo.statInfo = statInfo;
+					return;
+				}
+				else {
+				statInfo.champions[i].champName = champSelect(statInfo.champions[i].id);
+				
+				}
+			}
+			
 
 		}).
 		error (function() {

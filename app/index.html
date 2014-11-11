@@ -113,24 +113,42 @@
         </div> -->
     </div>
       <p>Ranked Champion Stats</p>
-    <p class = "inline">Champion</p>
-    <p class = "inline">Games</p>
-    <p class = "inline">Win</p>
-    <p class = "inline">Loss</p>
-    <p class = "inline">Percent</p>
-    <p class = "inline">Minions</p>
-    <p class = "inline">Kills</p>
-    <p class = "inline">Deaths</p>
-    <p class = "inline">Assists</p>
-    <div class = "championStats" ng-repeat = "champion in gameInfo.statInfo.champions">
-      <img class = "statImage" src = "images/champion/janna.png"></img>
-      <p class = "inline">{{champion.stats.totalSessionsPlayed}} Games</p>
-      <p class = "inline">{{champion.stats.totalSessionsWon}} Win {{champion.stats.totalSessionsLost}} Loss</p>
-      <p class = "inline">{{champion.stats.totalMinionKills / champion.stats.totalSessionsPlayed | number:1}} CS/Game</p>
-      <p class = "inline">{{champion.stats.totalChampionKills / champion.stats.totalSessionsPlayed | number:1}} K</p>
-      <p class = "inline">{{champion.stats.totalDeathsPerSession / champion.stats.totalSessionsPlayed | number:1}} D</p>
-      <p class = "inline">{{champion.stats.totalAssists / champion.stats.totalSessionsPlayed | number:1}} A</p>
 
+<!--might use this eventually-->
+<!--     <table>
+      <tr class = "firstRow">
+        <th>Games</th>
+        <th>Win</th>
+        <th>Loss</th>
+        <th> % </th>
+        <th>Minions</th>
+        <th>Kills</th>
+        <th>Deaths</th>
+        <th>Assists</th>
+      </tr>
+      <tr ng-repeat = "champion in gameInfo.statInfo.champions">
+        <td>{{champion.stats.totalSessionsPlayed}}</td>
+        <td>{{champion.stats.totalSessionsWon}}</td>
+        <td>{{champion.stats.totalSessionsLost}}</td>
+        <td>{{champion.stats.totalMinionKills / champion.stats.totalSessionsPlayed | number:1}}</td>
+        <td>{{champion.stats.totalChampionKills / champion.stats.totalSessionsPlayed | number:1}}</td>
+        <td>{{champion.stats.totalDeathsPerSession / champion.stats.totalSessionsPlayed | number:1}}</td>
+        <td>{{champion.stats.totalAssists / champion.stats.totalSessionsPlayed | number:1}}</td>
+      </tr>
+    </table> -->
+
+
+
+
+    <div class = "championStats" ng-repeat = "champion in gameInfo.statInfo.champions">
+      <img class = "statImage" ng-src = "images/champion/{{champion.champName}}.png"></img>
+      <div class = "stat"><p class = "inline">{{champion.stats.totalSessionsPlayed}} Games</p></div>
+      <div class = "stat"><p class = " inline">{{champion.stats.totalSessionsWon}} Win</p></div>
+      <div class = "stat"><p class = "inline"> {{champion.stats.totalSessionsLost}} Loss</p></div>
+      <div class = "stat"><p class = "inline">{{champion.stats.totalMinionKills / champion.stats.totalSessionsPlayed | number:1}} CS</p></div>
+      <div class = "stat kda"><p class = "inline">{{champion.stats.totalChampionKills / champion.stats.totalSessionsPlayed | number:1}} K</p></div>
+      <div class = "stat kda"><p class = "inline">{{champion.stats.totalDeathsPerSession / champion.stats.totalSessionsPlayed | number:1}} D</p></div>
+      <div class = "stat kda"><p class = "inline">{{champion.stats.totalAssists / champion.stats.totalSessionsPlayed | number:1}} A</p></div>
     </div>
 
 
