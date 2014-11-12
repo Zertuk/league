@@ -13,6 +13,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
     <!-- endbuild -->
   </head>
   <body ng-app="leagueApp">
@@ -39,11 +40,12 @@
     <div class = "container main" ng-cloak>
       <div style = "background-color: {{game.color}}" class = "gameInfo" ng-repeat = "game in gameInfo">
         <div class = "championInfo">
+
           <img title = "{{game.champNames}}" class = "champImage" ng-src = "{{game.champImages}}"></img>
           <img title = "{{game.spellNames[0]}}" class = "summonerSpell" ng-src = "{{game.spellImages[0]}}"></img>
           <img title = "{{game.spellNames[1]}}" class = "summonerSpell" ng-src = "{{game.spellImages[1]}}"></img>
-        
-          <div class = "statInfo inline">
+          <div class = "statInfo">
+            <p class = "gameType">{{game.subType}}</p>
             <p class = "kill inline">{{game.stats.championsKilled}}</p>
             <p class = "inline">/</p>
             <p class = "death inline">{{game.stats.numDeaths}}</p>
