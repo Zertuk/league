@@ -21,6 +21,7 @@ var enemyChamps = [];
 var itemInfo = [];
 var testingHere;
 var statInfo = [];
+var leagueInfo = [];
 
 
 angular.module('leagueApp')
@@ -55,6 +56,7 @@ angular.module('leagueApp')
 			$scope.itemFix(gameInfo);
 			$scope.teamChampMap(gameInfo);
 			$scope.statLookUp();
+			$scope.leagueLookUp();
 		}).
 		error (function() {
 			alert('not ok');
@@ -79,6 +81,18 @@ angular.module('leagueApp')
 				}
 			}
 			
+
+		}).
+		error (function() {
+			alert('not ok');
+		})
+	}
+
+	$scope.leagueLookUp = function() {
+		$http.get('https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/' + summonerId + '/entry?api_key=' + apiKey).
+		success (function(json) {
+			leagueInfo = json[summonerId];
+			$scope.gameInfo[0].leagueInfo = leagueInfo;
 
 		}).
 		error (function() {

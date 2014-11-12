@@ -6,6 +6,31 @@ body {
   font-family: 'Titillium Web', sans-serif;
 }
 
+.tierInfo {
+  text-align: center;
+  width: 100%;
+
+}
+
+.tierIcon {
+  width: 100px;
+}
+
+.tierDivision {
+  font-width: bold;
+  margin-bottom: 0px;
+}
+
+.tierName {
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.tierWins {
+  color: #00841c;
+  margin-bottom: 0px;
+}
+
 .itemToolTip {
   background-color: darkblue;
   width: 300px;
