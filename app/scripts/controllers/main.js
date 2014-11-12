@@ -110,9 +110,8 @@ angular.module('leagueApp')
         	champImages[i] = '/images/champion/' + champNames[i] + '.png'
         	$scope.gameInfo[i].champImages = champImages[i];
         	console.log($scope.gameInfo[i].champImages);
-        	$scope.gameInfo[i].toolTip = '<div class = "itemToolTip"><p class = "itemName">{{itemInfo.name}}</p><p class = "itemDescription" ng-bind-html = "itemInfo.description"></p><p class = "itemText">{{itemInfo.plaintext}}</p></div>';
-
-        	
+	       	$scope.gameInfo[i].toolTip = '<div class = "itemToolTip"><p class = "itemName">{{itemInfo.name}}</p><p class = "itemDescription" ng-bind-html = "itemInfo.description"></p><p class = "itemText">{{itemInfo.plaintext}}</p></div>';
+       	       	
         }
 	};
 
@@ -131,15 +130,19 @@ angular.module('leagueApp')
 			var k = 1;
 			var l = 0;
 			for (var i = 0; i < 9; i++) {
-				if (data[j].fellowPlayers[i].teamId == data[j].teamId) {
-					teamChamps[k] = champSelect(data[j].fellowPlayers[i].championId);
-					k++;
+				if (data[j].fellowPlayers[i] == undefined) {
+        			console.log('done')
+        		}
+        		else {
+					if (data[j].fellowPlayers[i].teamId == data[j].teamId) {
+						teamChamps[k] = champSelect(data[j].fellowPlayers[i].championId);
+						k++;
+					}
+					else {
+						enemyChamps[l] = champSelect(data[j].fellowPlayers[i].championId);
+						l++;
+					}
 				}
-				else {
-					enemyChamps[l] = champSelect(data[j].fellowPlayers[i].championId);
-					l++;
-				}
-				
 				data[j].fellowPlayers.teamChamps = teamChamps;
 				data[j].fellowPlayers.enemyChamps = enemyChamps;
 			}
