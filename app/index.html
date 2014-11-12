@@ -40,12 +40,17 @@
 
    
     <div class = "container main" ng-cloak>
-      <div class = "tierInfo">
+
+    <div class = "tiers">
+      <div ng-repeat = "league in gameInfo[0].leagueInfo" class = "tierInfo">
         <img class = "tierIcon" ng-src = "/images/tier/{{gameInfo[0].leagueInfo[0].tier}}.png">
-        <p class = "tierWins">{{gameInfo[0].leagueInfo[0].entries[0].wins}} Wins</p>
-        <p class = "tierDivision">{{gameInfo[0].leagueInfo[0].tier}} {{gameInfo[0].leagueInfo[0].entries[0].division}} {{gameInfo[0].leagueInfo[0].entries[0].leaguePoints}} LP</p>
-        <p class = "tierName">{{gameInfo[0].leagueInfo[0].name}}</p>
+        <p class = "tierTeam">{{league.entries[0].playerOrTeamName}}
+        <p class = "tierWins">{{league.entries[0].wins}} Wins</p>
+        <p class = "tierDivision">{{league.tier}} {{league.entries[0].division}} {{league.entries[0].leaguePoints}} LP</p>
+        <p class = "tierName">{{league.name}}</p>
       </div>
+    </div>
+      
       <div style = "background-color: {{game.color}}" class = "gameInfo" ng-repeat = "game in gameInfo">
         <div class = "championInfo">
 

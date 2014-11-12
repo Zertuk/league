@@ -6,9 +6,16 @@ body {
   font-family: 'Titillium Web', sans-serif;
 }
 
+
+.tiers {
+   text-align: center;
+
+}
 .tierInfo {
   text-align: center;
-  width: 100%;
+  display: inline-block;
+  margin-right: 30px;
+  margin-left: 30px;
 
 }
 
