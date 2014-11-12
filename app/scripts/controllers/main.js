@@ -130,6 +130,7 @@ angular.module('leagueApp')
 			var k = 1;
 			var l = 0;
 			for (var i = 0; i < 9; i++) {
+				if (data[j].fellowPlayers) {
 				if (data[j].fellowPlayers[i] == undefined) {
         			console.log('done')
         		}
@@ -145,6 +146,7 @@ angular.module('leagueApp')
 				}
 				data[j].fellowPlayers.teamChamps = teamChamps;
 				data[j].fellowPlayers.enemyChamps = enemyChamps;
+			}
 			}
 			enemyChamps = [];
 			teamChamps = [];
