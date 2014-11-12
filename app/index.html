@@ -43,7 +43,7 @@
 
     <div class = "tiers">
       <div ng-repeat = "league in gameInfo[0].leagueInfo" class = "tierInfo">
-        <img class = "tierIcon" ng-src = "/images/tier/{{gameInfo[0].leagueInfo[0].tier}}.png">
+        <img class = "tierIcon" ng-src = "/images/tier/{{league.tier}}.png">
         <p class = "tierTeam">{{league.entries[0].playerOrTeamName}}
         <p class = "tierWins">{{league.entries[0].wins}} Wins</p>
         <p class = "tierDivision">{{league.tier}} {{league.entries[0].division}} {{league.entries[0].leaguePoints}} LP</p>
