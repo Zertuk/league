@@ -148,30 +148,52 @@ body {
 .statInfo {
   margin-left: 10px; 
   width: 400px;
+  font-size: 16px;
   display: inline-block;
 }
 
+.wardInfo {
+  margin-top: 5px;
+  margin-left: 2px;
+}
+
+.wardImage {
+  width: 15px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
+
+.wardText {
+  display: inline;
+  margin: 5px;
+}
+
+
 .kill {
-  color: green;
+  color: #00841c;
 }
 
 .death {
-  color: red;
+  color: #c90707;
 }
 
 .assist {
-  color: orange;
+  color: #00841c;
 }
 
 .cs {
   margin-left: 5px;
-  color: purple;
+  color:  #520B6B;
 }
 
 .gold {
   margin-left: 5px;
-  color:  #FCCE1C;
-  font-family: 'Titillium Web', sans-serif;
+  color:  #520B6B;
+}
+
+.level {
+  margin-left: 5px;
+
 }
 
 
@@ -189,14 +211,14 @@ body {
   float: right;
   width: 185px;
   height: 100px;
-  margin-top: -110px;
+  margin-top: -112px;
   margin-right: 350px; 
 }
 
 .goldInfo {
   float: left;
   margin-left: 345px;
-  margin-top: -80px;
+  margin-top: -110px;
 
 }
 

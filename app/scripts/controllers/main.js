@@ -136,7 +136,7 @@ angular.module('leagueApp')
 	$scope.teamColor = function(data) {
 		for (var i = 0; i < 10; i++) {
 			if (data[i].stats.win != true) {
-				teamColor[i] = '#f47979';
+				teamColor[i] = '#f9bcbc';
 			}
 			else {
 				teamColor[i] = '#bddfeb';

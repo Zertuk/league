@@ -46,11 +46,11 @@
           <img title = "{{game.spellNames[1]}}" class = "summonerSpell" ng-src = "{{game.spellImages[1]}}"></img>
           <div class = "statInfo">
             <p class = "gameType">{{game.subType}}</p>
-            <p class = "kill inline">{{game.stats.championsKilled}}</p>
+            <p class = "kill inline">{{game.stats.championsKilled || 0}}</p>
             <p class = "inline">/</p>
-            <p class = "death inline">{{game.stats.numDeaths}}</p>
+            <p class = "death inline">{{game.stats.numDeaths || 0}}</p>
             <p class = "inline">/</p>
-            <p class = "assist inline">{{game.stats.assists}}</p>
+            <p class = "assist inline">{{game.stats.assists || 0}}</p>
           </div>
         </div>
 
@@ -63,11 +63,17 @@
           <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover(game.stats.item3)" class = "item" ng-src = "images/item/{{game.stats.item3}}.png"></img>
           <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover(game.stats.item4)" class = "item" ng-src = "images/item/{{game.stats.item4}}.png"></img>
           <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover(game.stats.item5)" class = "item" ng-src = "images/item/{{game.stats.item5}}.png"></img>
+          <div class = "wardInfo">
+          <p class = "wardText"><img class = "wardImage" src = "/images/item/2044.png">{{game.stats.wardPlaced || 0}}</p>
+          <p class = "wardText"><img class = "wardImage" src = "/images/item/2043.png">{{game.stats.visionWardsBought || 0}}</p>
+          <p class = "wardText"><img class = "wardImage" src = "/images/item/3341.png">{{game.stats.wardKilled || 0}}</p>
+        </div>
         </div>
 
         <div class = "goldInfo">
-          <p class = "gold">{{game.stats.goldEarned}} Gold</p>
-          <p class = "cs">{{game.stats.minionsKilled + game.stats.neutralMinionsKilled}} Creeps</p>
+          <p class = "level"><strong>Level</strong> {{game.stats.level}}</p>
+          <p class = "gold">{{game.stats.goldEarned}} <strong>Gold</strong></p>
+          <p class = "cs">{{game.stats.minionsKilled + game.stats.neutralMinionsKilled || 0}} <strong>Creeps</strong></p>
         </div>
 
 
