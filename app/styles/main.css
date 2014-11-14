@@ -19,6 +19,10 @@ body {
 
 }
 
+.test {
+  text-align: center;
+}
+
 .tierIcon {
   width: 100px;
 }

@@ -153,12 +153,16 @@ angular.module('leagueApp')
 		}
 	}
 	$scope.teamColor = function(data) {
+		$scope.gameInfo.lose = 0;
+		$scope.gameInfo.win = 0;
 		for (var i = 0; i < 10; i++) {
 			if (data[i].stats.win != true) {
 				teamColor[i] = '#f9bcbc';
+				$scope.gameInfo.lose = $scope.gameInfo.lose + 1;
 			}
 			else {
 				teamColor[i] = '#bddfeb';
+				$scope.gameInfo.win = $scope.gameInfo.win + 1;
 			}
 
 			$scope.gameInfo[i].color = teamColor[i];

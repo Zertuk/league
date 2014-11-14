@@ -51,6 +51,15 @@
       </div>
     </div>
       
+    <ul class = " test nav nav-tabs">
+        <li class = "active"><a href = "#">Match History</a></li>
+        <li><a href = "#">Champion Stats</a></li>
+    </ul>  
+    <div class = "gameSummary" ng-cloak>
+      <p class = "inline">{{gameInfo.win}} wins</p>
+      <p class = "inline">{{gameInfo.lose}} losses</p>
+      <p class = "inline">{{(gameInfo.win / gameInfo.lose)*100}} % win ratio</p> 
+    </div>
       <div style = "background-color: {{game.color}}" class = "gameInfo" ng-repeat = "game in gameInfo">
         <div class = "championInfo">
 
