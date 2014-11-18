@@ -6,6 +6,10 @@ body {
   font-family: 'Titillium Web', sans-serif;
 }
 
+.gameSummary {
+  display: none;
+}
+
 
 .tiers {
    text-align: center;
@@ -17,10 +21,6 @@ body {
   margin-right: 30px;
   margin-left: 30px;
 
-}
-
-.test {
-  text-align: center;
 }
 
 .tierIcon {
@@ -137,11 +137,6 @@ body {
   border: 1px solid black;
 
 }
-
-.championStats:last-of-type  {
-  display: none;
-}
-
 
 .stat {
   margin: 5px;
