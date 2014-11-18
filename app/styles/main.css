@@ -137,6 +137,10 @@ body {
   border: 1px solid black;
 }
 
+.championStats:last-of-type {
+  margin-bottom: 100px;
+}
+
 h3 {
   margin-top: 50px;
   text-align: center;
