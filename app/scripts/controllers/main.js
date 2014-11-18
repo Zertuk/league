@@ -26,6 +26,8 @@ var leagueInfo = [];
 
 angular.module('leagueApp')
   .controller('MainCtrl', function ($scope, $http) {
+  	//api call for the summoner id by name, changes summoner name to not include spaces to prevent errors
+  	//runs matchLookUp api call to continue
   	$scope.apiCall = function() {
 		console.log($scope.summonerName)
 		$http.get('https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/' + $scope.summonerName + '?api_key=' + apiKey).
@@ -39,24 +41,17 @@ angular.module('leagueApp')
 
 		}).
 		error (function() {
-			alert('not ok');
-
+			alert('Summoner Name not Found');
 			})
 		};
 
+	//api call for match look up using summoner Id, also runs a
 	$scope.matchLookUp = function() {
 		$http.get('https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/' + summonerId + '/recent' + '?api_key=' + apiKey).
 		success (function(json) {
 			gameInfo = json.games;
 			$scope.gameInfo = gameInfo;
-			console.log($scope.gameInfo);
-			$scope.championIdNameMap(gameInfo);
-			$scope.spellIdNameMap(gameInfo);
-			$scope.teamColor(gameInfo);
-			$scope.itemFix(gameInfo);
-			$scope.teamChampMap(gameInfo);
-			$scope.statLookUp();
-			$scope.leagueLookUp();
+			$scope.massFunctionCall();
 			$('.gameSummary').show();
 
 		}).
@@ -64,6 +59,15 @@ angular.module('leagueApp')
 			alert('not ok');
 		})
 	};
+	$scope.massFunctionCall = function() {
+			$scope.championIdNameMap(gameInfo);
+			$scope.spellIdNameMap(gameInfo);
+			$scope.teamColor(gameInfo);
+			$scope.itemFix(gameInfo);
+			$scope.teamChampMap(gameInfo);
+			$scope.statLookUp();
+			$scope.leagueLookUp();
+	}
 
 	$scope.statLookUp = function() {
 		$http.get('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + summonerId + '/ranked?season=SEASON4&api_key=' + apiKey).
