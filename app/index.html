@@ -106,37 +106,6 @@
           <img class = "teamImage" ng-src = "/images/champion/{{player}}.png"></img><p class = "team">{{player}}</p>
         </div>
       </div>
-
-<!--         <div class = "member">
-          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
-        </div>
-        <div class = "member">
-          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
-        </div>
-        <div class = "member">
-          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
-        </div>
-        <div class = "member">
-          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
-        </div>
-      </div>
-
-      <div class = "teamInfo">
-        <div class = "member">
-          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
-        </div>
-        <div class = "member">
-          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
-        </div>
-        <div class = "member">
-          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
-        </div>
-        <div class = "member">
-          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
-        </div>
-        <div class = "member">
-          <img class = "teamImage" ng-src = "{{game.champImages}}"></img><p class = "team">test</p>
-        </div> -->
     </div>
       
 
@@ -163,10 +132,10 @@
       </tr>
     </table> -->
 
-
+    <h3>Champion Stats</h3>
 
     <div class = "championStats" ng-repeat = "champion in gameInfo.statInfo.champions" ng-if="champion.id != 0">
-      <img class = "statImage" ng-src = "images/champion/{{champion.champName}}.png"></img>
+      <a href = "http://leagueoflegends.wikia.com/wiki/{{champion.champName}}" target = "_blank"><img title = "{{champion.champName}}" class = "statImage" ng-src = "images/champion/{{champion.champName}}.png"></img></a>
       <div class = "stat"><p class = "inline">{{champion.stats.totalSessionsPlayed}} Games</p></div>
       <div class = "stat"><p class = " inline">{{champion.stats.totalSessionsWon}} Win</p></div>
       <div class = "stat"><p class = "inline"> {{champion.stats.totalSessionsLost}} Loss</p></div>
@@ -175,14 +144,6 @@
       <div class = "stat kda"><p class = "inline">{{champion.stats.totalDeathsPerSession / champion.stats.totalSessionsPlayed | number:1}} D</p></div>
       <div class = "stat kda"><p class = "inline">{{champion.stats.totalAssists / champion.stats.totalSessionsPlayed | number:1}} A</p></div>
     </div>
-
-
-
-
-
-
-
-
   </div>
 
 
