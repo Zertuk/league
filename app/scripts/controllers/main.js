@@ -57,6 +57,8 @@ angular.module('leagueApp')
 			$scope.teamChampMap(gameInfo);
 			$scope.statLookUp();
 			$scope.leagueLookUp();
+			$('.gameSummary').show();
+
 		}).
 		error (function() {
 			alert('not ok');
@@ -67,6 +69,7 @@ angular.module('leagueApp')
 		$http.get('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + summonerId + '/ranked?season=SEASON4&api_key=' + apiKey).
 		success (function(json) {
 			statInfo = json;
+			var j = 0;
 			var i = 0;
 			while (statInfo.champions[i].id != undefined) {
 				i = i + 1;
@@ -77,7 +80,6 @@ angular.module('leagueApp')
 				}
 				else {
 				statInfo.champions[i].champName = champSelect(statInfo.champions[i].id);
-				
 				}
 			}
 			
@@ -213,4 +215,9 @@ angular.module('leagueApp')
 		// $scope.itemInfo = itemInfo;
 		console.log('OK');
 	}
+	$scope.defaultSearch = function() {
+		$scope.summonerName = 'Zertuk';
+		$scope.apiCall();
+	}
+	$scope.defaultSearch();
   });
