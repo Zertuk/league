@@ -52,9 +52,11 @@
     </div>
       
     <div class = "gameSummary">
-      <p class = "inline">{{gameInfo.win}} wins</p>
-      <p class = "inline">{{gameInfo.lose}} losses</p>
-      <p class = "inline">{{(gameInfo.win /10)*100}} % win ratio</p> 
+      <p id = "average">10 Game Average:</p>
+      <p class = "summary inline">{{gameInfo.win}} wins / {{gameInfo.lose}} losses</p>
+      <p class = "summary inline">{{(gameInfo.win /10)*100}} % win ratio</p> 
+      <p class = "summary inline">{{gameInfo.killAverage}} / {{gameInfo.deathAverage}} / {{gameInfo.assistAverage}}</p>
+      <p class = "summary inline">{{gameInfo.csAverage}}</p>
     </div>
       <div style = "background-color: {{game.color}}" class = "gameInfo" ng-repeat = "game in gameInfo">
         <div class = "championInfo">
