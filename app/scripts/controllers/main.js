@@ -22,6 +22,10 @@ var itemInfo = [];
 var testingHere;
 var statInfo = [];
 var leagueInfo = [];
+var killAverage;
+var csAverage;
+var assistAverage;
+var deathAverage;
 
 
 angular.module('leagueApp')
@@ -68,6 +72,7 @@ angular.module('leagueApp')
 			$scope.teamChampMap(gameInfo);
 			$scope.statLookUp();
 			$scope.leagueLookUp();
+			$scope.gameAverages(gameInfo);
 	}
 
 	//api call for summoner champion stats by summoner id, also sets champion names
@@ -185,6 +190,36 @@ angular.module('leagueApp')
 
 			$scope.gameInfo[i].color = teamColor[i];
 		}
+	}
+
+	$scope.gameAverages = function(data) {
+		killAverage = 0;
+		deathAverage = 0;
+		assistAverage = 0;
+		csAverage = 0;
+		for (var i = 0; i < 10; i++) {
+			if (data[i].stats.championsKilled != undefined) {
+				killAverage = killAverage + data[i].stats.championsKilled;
+			}
+			if (data[i].stats.numDeaths != undefined) {
+				deathAverage = deathAverage + data[i].stats.numDeaths;
+			}
+			if (data[i].stats.assists != undefined) {
+				assistAverage = assistAverage + data[i].stats.assists;
+			}
+			if (data[i].stats.minionsKilled != undefined) {
+				if (data[i].stats.neutralMinionsKilled != undefined) {
+					csAverage = csAverage + data[i].stats.minionsKilled + data[i].stats.neutralMinionsKilled;
+				}
+				else {
+					csAverage = csAverage + data[i].stats.minionsKilled;
+				}
+			}
+		}
+		$scope.gameInfo.killAverage = killAverage/10;
+		$scope.gameInfo.deathAverage = deathAverage/10;
+		$scope.gameInfo.assistAverage = assistAverage/10;
+		$scope.gameInfo.csAverage = csAverage/10;
 	}
 	//goes through each item in each game to get rid of the undefined values and set to 'empty' which provides a 1x1 transparent image
 	$scope.itemFix = function(data) {
