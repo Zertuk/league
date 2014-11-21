@@ -71,6 +71,7 @@
             <p class = "death inline">{{game.stats.numDeaths || 0}}</p>
             <p class = "inline">/</p>
             <p class = "assist inline">{{game.stats.assists || 0}}</p>
+            
           </div>
         </div>
 
@@ -91,6 +92,8 @@
         </div>
 
         <div class = "goldInfo">
+          <p class = "date">{{game.createDate | date:'MM-dd-yyyy'}}</p>
+
           <p class = "level"><strong>Level</strong> {{game.stats.level}}</p>
           <p class = "gold">{{game.stats.goldEarned}} <strong>Gold</strong></p>
           <p class = "cs">{{game.stats.minionsKilled + game.stats.neutralMinionsKilled || 0}} <strong>Creeps</strong></p>
@@ -110,6 +113,7 @@
       </div>
     </div>
       
+
 
 <!--might use this eventually-->
 <!--     <table>
@@ -136,7 +140,7 @@
 
     <h3>Champion Stats</h3>
 
-    <div class = "championStats" ng-repeat = "champion in gameInfo.statInfo.champions" ng-if="champion.id != 0">
+    <div class = "championStats" ng-repeat = "champion in gameInfo.statInfo.champions | orderBy: stats.totalSessionsPlayed" ng-if="champion.id != 0">
       <a href = "http://leagueoflegends.wikia.com/wiki/{{champion.champName}}" target = "_blank"><img title = "{{champion.champName}}" class = "statImage" ng-src = "images/champion/{{champion.champName}}.png"></img></a>
       <div class = "stat"><p class = "inline">{{champion.stats.totalSessionsPlayed}} Games</p></div>
       <div class = "stat"><p class = " inline">{{champion.stats.totalSessionsWon}} Win</p></div>
@@ -146,6 +150,10 @@
       <div class = "stat kda"><p class = "inline">{{champion.stats.totalDeathsPerSession / champion.stats.totalSessionsPlayed | number:1}} D</p></div>
       <div class = "stat kda"><p class = "inline">{{champion.stats.totalAssists / champion.stats.totalSessionsPlayed | number:1}} A</p></div>
     </div>
+
+    <footer>
+      League Stats isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+    </footer>
   </div>
 
 

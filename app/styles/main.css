@@ -231,6 +231,10 @@ h3 {
   margin: 5px;
 }
 
+.date {
+  font-size: 12px;
+  margin-left: 5px;
+}
 
 .kill {
   color: #00841c;
