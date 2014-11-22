@@ -23,6 +23,14 @@
 
   <div ng-controller = 'MainCtrl'>
     <div class = "container">
+
+      <div class = "itemToolTip">
+              <p class = "itemName">{{itemInfo.name}}</p>
+              <p class = "itemDescription" ng-bind-html = "itemInfo.description"></p>
+              <p class = "itemText">{{itemInfo.plaintext}}</p>
+      </div>
+
+
       <form role = "form" ng-submit = "apiCall()">
         <div class = "input-group">
           <input type = "text" class = "form-control" ng-model = "summonerName">
@@ -32,12 +40,6 @@
         </div>
       </form>
     </div>
-<!--     <div class = "itemToolTip" ng-cloak>
-      <p class = "itemName">{{itemInfo.name}}</p>
-      <p class = "itemDescription" ng-bind-html = "itemInfo.description"></p>
-      <p class = "itemText">{{itemInfo.plaintext}}</p>
-    </div> -->
-
    
     <div class = "container main" ng-cloak>
 
@@ -77,13 +79,20 @@
 
 
         <div class = "itemInfo">
-          <img tooltip-html-unsafe="test" tooltip-placement="right" ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover(game.stats.item0, $event)" class = "item" ng-src = "images/item/{{game.stats.item0}}.png"></img>
-          <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover(game.stats.item1)" class = "item" ng-src = "images/item/{{game.stats.item1}}.png"></img>
-          <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover(game.stats.item2)" class = "item" ng-src = "images/item/{{game.stats.item2}}.png"></img>
-          <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover(game.stats.item6)" class = "item trinket" ng-src = "images/item/{{game.stats.item6}}.png"></img>
-          <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover(game.stats.item3)" class = "item" ng-src = "images/item/{{game.stats.item3}}.png"></img>
-          <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover(game.stats.item4)" class = "item" ng-src = "images/item/{{game.stats.item4}}.png"></img>
-          <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover(game.stats.item5)" class = "item" ng-src = "images/item/{{game.stats.item5}}.png"></img>
+          <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item0)" title = "{{game.stats.item0}}" class = "item" ng-src = "images/item/{{game.stats.item0}}.png"></img>
+
+          <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item1)" class = "item" ng-src = "images/item/{{game.stats.item1}}.png"></img>
+
+          <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item2)" class = "item" ng-src = "images/item/{{game.stats.item2}}.png"></img>
+
+          <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item6)" class = "item trinket" ng-src = "images/item/{{game.stats.item6}}.png"></img>
+
+          <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item3)" class = "item" ng-src = "images/item/{{game.stats.item3}}.png"></img>
+
+          <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item4)" class = "item" ng-src = "images/item/{{game.stats.item4}}.png"></img>
+
+          <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item5)" class = "item" ng-src = "images/item/{{game.stats.item5}}.png"></img>
+
           <div class = "wardInfo">
           <p class = "wardText"><img class = "wardImage" src = "/images/item/2044.png">{{game.stats.wardPlaced || 0}}</p>
           <p class = "wardText"><img class = "wardImage" src = "/images/item/2043.png">{{game.stats.visionWardsBought || 0}}</p>
