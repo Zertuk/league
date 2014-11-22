@@ -248,27 +248,26 @@ angular.module('leagueApp')
 			}
 		}
 	};
-	//not currently in use
-
-	// $scope.itemHover = function(item) {
-	// 	if (item === 'empty') {
-	// 		return;
-	// 	}
-	// 	$http.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/item/' + item + '?api_key=' + apiKey).
-	// 	success (function(json) {
-	// 		console.log(json);
-	// 		itemInfo = json;
-	// 		$scope.itemInfo = itemInfo;
-	// 	}).
-	// 	error (function() {
-	// 		alert('not ok');
-	// 	});
-	// }
-	// $scope.itemLeave = function() {
-	// 	// itemInfo = [];
-	// 	// $scope.itemInfo = itemInfo;
-	// 	console.log('OK');
-	// }
+	$scope.itemHover = function(event, item) {
+		if (item === 'empty') {
+			return;
+		}
+		$http.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/item/' + item + '?api_key=' + apiKey).
+		success (function(json) {
+			console.log(json);
+			itemInfo = json;
+			$scope.itemInfo = itemInfo;
+			$('.itemToolTip').hide();
+		    $('.itemToolTip').css({'top': event.pageY + 20, 'left': event.pageX + 5, 'position':'absolute'});
+		    $('.itemToolTip').show();
+		}).
+		error (function() {
+			alert('Item not found');
+		});
+	}
+	$scope.itemLeave = function() {
+		$('.itemToolTip').hide();
+	}
 	//default search!
 	$scope.defaultSearch = function() {
 		$scope.summonerName = 'Dyrus';
