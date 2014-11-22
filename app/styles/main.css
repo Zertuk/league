@@ -43,10 +43,11 @@ body {
 }
 
 .itemToolTip {
+  display: none;
   background-color: darkblue;
   width: 300px;
   height: auto;
-  opacity: 0.75;
+  opacity: 0.9;
   border-radius: 5px;
   border: 1px solid black;
 }
