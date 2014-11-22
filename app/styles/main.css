@@ -122,6 +122,117 @@ body {
   margin-bottom: 5px;
 }
 
+.test {
+  background-color: lightgrey;
+  width: 100%;
+  height: 140px;
+  margin-bottom: 5px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.testChamp {
+  background-color: white;
+  width: 80px;
+  height: 120px;
+  margin-right: 10px;
+  float: left;
+}
+
+.testImage {
+  background-color: red;
+  width: 80px;
+  height: 80px;
+}
+
+.testGameType {
+  font-size: 8px;
+}
+
+.testKDA {
+  font-size: 16px;
+
+}
+
+.testSpells {
+  background-color: green;
+  width: 35px;
+  height: 120px;
+  margin-right: 10px;
+  float: left;
+}
+
+.testSpell {
+  width: 35px;
+  height: 35px;
+  background-color: orange;
+  margin-bottom: 10px;
+}
+
+.testItems {
+  margin-left: -2px;
+  margin-top: -2px;
+  background-color: pink;
+  height: 120px;
+  width: 200px;
+  float: left;
+}
+
+.testItem {
+  margin: 2px;
+  width: 40px;
+  height: 40px;
+  background-color: grey;
+  display: inline-block;
+}
+
+.testMainItems {
+  width: 140px;
+  height: 94px;
+  background-color: red;
+  float: left;
+}
+
+.testTrinket {
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+
+.testTrinketItem {
+  width: 50px;
+  height: 50px;
+  margin-top: 22px;
+  background-color: yellow;
+}
+
+.testItemWrapper {
+  width: 200px;
+  height: 95px;
+}
+
+.testWardInfo {
+  width: 140px;
+  height: 26px;
+  float: left;
+  background-color: purple;
+}
+
+.testWardImage {
+  width: 20px;
+  height: 20px;
+  background-color: orange;
+  margin-right: 5px;
+  margin-top: 4px;
+  float: left;
+}
+
+.testWardText {
+  float: left;
+  margin-right: 5px;
+  margin-top: 3px;
+}
+
 .champImage {
   width: 80px;
   margin-left: 10px;
