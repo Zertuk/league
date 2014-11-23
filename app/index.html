@@ -55,92 +55,88 @@
       </div>
     </div>
 
-
-
-
-   <div class = "match" ng-repeat = "game in gameInfo" style = "background-color: {{game.color}}">
-      <div class = "championGameType">
-        <img title = "{{game.champNames}}" class = "championImage" ng-src = "{{game.champImages}}"></img>
-        <p class = "gameType">{{game.subType}}</p>
-        <p class = "testKDA">{{game.stats.championsKilled || 0}} / {{game.stats.numDeaths || 0}} / {{game.stats.assists || 0}}</p>
-      </div>
-      <div class = "summonerSpells">
-        <img title = "{{game.spellNames[0]}}" class = "spell" ng-src = "{{game.spellImages[0]}}"></img>
-        <img title = "{{game.spellNames[1]}}" class = "spell" ng-src = "{{game.spellImages[1]}}"></img>
-      </div>
-      <div class = "itemsContainer">
-          <div class = "mainItems">
-            <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item0)" title = "{{game.stats.item0}}" class = "item" ng-src = "images/item/{{game.stats.item0}}.png"></img>
-            <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item1)" class = "item" ng-src = "images/item/{{game.stats.item1}}.png"></img>
-            <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item2)" class = "item" ng-src = "images/item/{{game.stats.item2}}.png"></img>
-            <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item3)" class = "item" ng-src = "images/item/{{game.stats.item3}}.png"></img>
-            <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item4)" class = "item" ng-src = "images/item/{{game.stats.item4}}.png"></img>
-
-            <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item5)" class = "item" ng-src = "images/item/{{game.stats.item5}}.png"></img>
-          </div>
-          <div class = "trinketItem">
-            <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item6)" class = "trinket" ng-src = "images/item/{{game.stats.item6}}.png"></img>
-          </div>
-          <div class = "wardInfo">
-            <img class = "wardImage" src = "/images/item/2044.png">
-            <p class = "wardText">
-              {{game.stats.wardPlaced || 0}}
-            </p>
-            <img class = "wardImage" src = "/images/item/2043.png">
-            <p class = "wardText">
-              {{game.stats.visionWardsBought || 0}}
-            </p>
-            <img class = "wardImage" src = "/images/item/3341.png">
-            <p class = "wardText">
-              {{game.stats.wardKilled || 0}}
-            </p>
-          </div>
-      </div>
-      <div class = "goldInfo">
-        <p class = "date">{{game.createDate | date:'MM-dd-yyyy'}}</p>
-        <p class = "level"><strong>Level</strong> {{game.stats.level}}</p>
-        <p class = "gold">{{game.stats.goldEarned}} <strong>Gold</strong></p>
-        <p class = "cs">{{game.stats.minionsKilled + game.stats.neutralMinionsKilled || 0}} <strong>Creeps</strong></p>
-      </div>
-      <div class = "teamInfo">
-        <div ng-repeat = "player in game.fellowPlayers.teamChamps track by $index" class = "member">
-          <img class = "teamImage" src = "/images/champion/{{player}}.png"></img><p class = "team">{{player}}</p>
-        </div>
-      </div>
-      <div class = "enemyTeamInfo">
-        <div ng-repeat = "player in game.fellowPlayers.enemyChamps track by $index" class = "member">
-          <img class = "teamImage" ng-src = "/images/champion/{{player}}.png"></img><p class = "team">{{player}}</p>
-        </div>
-      </div>
-    </div>
-
-
-
-<!--     <div class = "gameSummary">
+    <div class = "gameSummary">
       <p id = "average">10 Game Average:</p>
       <p class = "summary inline">{{gameInfo.win}} wins / {{gameInfo.lose}} losses</p>
       <p class = "summary inline">{{(gameInfo.win /10)*100}} % win ratio</p> 
       <p class = "summary inline">{{gameInfo.killAverage}} / {{gameInfo.deathAverage}} / {{gameInfo.assistAverage}}</p>
       <p class = "summary inline">{{gameInfo.csAverage}} Creeps</p>
-    </div>-->
-
-    <h3>Champion Stats</h3>
-
-    <div class = "championStats" ng-repeat = "champion in gameInfo.statInfo.champions | orderBy: stats.totalSessionsPlayed" ng-if="champion.id != 0">
-      <a href = "http://leagueoflegends.wikia.com/wiki/{{champion.champName}}" target = "_blank"><img title = "{{champion.champName}}" class = "statImage" ng-src = "images/champion/{{champion.champName}}.png"></img></a>
-      <div class = "stat"><p class = "inline">{{champion.stats.totalSessionsPlayed}} Games</p></div>
-      <div class = "stat"><p class = " inline">{{champion.stats.totalSessionsWon}} Win</p></div>
-      <div class = "stat"><p class = "inline"> {{champion.stats.totalSessionsLost}} Loss</p></div>
-      <div class = "stat"><p class = "inline">{{champion.stats.totalMinionKills / champion.stats.totalSessionsPlayed | number:1}} CS</p></div>
-      <div class = "stat kda"><p class = "inline">{{champion.stats.totalChampionKills / champion.stats.totalSessionsPlayed | number:1}} K</p></div>
-      <div class = "stat kda"><p class = "inline">{{champion.stats.totalDeathsPerSession / champion.stats.totalSessionsPlayed | number:1}} D</p></div>
-      <div class = "stat kda"><p class = "inline">{{champion.stats.totalAssists / champion.stats.totalSessionsPlayed | number:1}} A</p></div>
     </div>
 
-    <footer>
-      League Stats isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
-    </footer>
-  </div>
+
+     <div class = "match" ng-repeat = "game in gameInfo" style = "background-color: {{game.color}}">
+        <div class = "championGameType">
+          <img title = "{{game.champNames}}" class = "championImage" ng-src = "{{game.champImages}}"></img>
+          <p class = "gameType">{{game.subType}}</p>
+          <p class = "testKDA">{{game.stats.championsKilled || 0}} / {{game.stats.numDeaths || 0}} / {{game.stats.assists || 0}}</p>
+        </div>
+        <div class = "summonerSpells">
+          <img title = "{{game.spellNames[0]}}" class = "spell" ng-src = "{{game.spellImages[0]}}"></img>
+          <img title = "{{game.spellNames[1]}}" class = "spell" ng-src = "{{game.spellImages[1]}}"></img>
+        </div>
+        <div class = "itemsContainer">
+            <div class = "mainItems">
+              <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item0)" title = "{{game.stats.item0}}" class = "item" ng-src = "images/item/{{game.stats.item0}}.png"></img>
+              <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item1)" class = "item" ng-src = "images/item/{{game.stats.item1}}.png"></img>
+              <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item2)" class = "item" ng-src = "images/item/{{game.stats.item2}}.png"></img>
+              <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item3)" class = "item" ng-src = "images/item/{{game.stats.item3}}.png"></img>
+              <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item4)" class = "item" ng-src = "images/item/{{game.stats.item4}}.png"></img>
+
+              <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item5)" class = "item" ng-src = "images/item/{{game.stats.item5}}.png"></img>
+            </div>
+            <div class = "trinketItem">
+              <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item6)" class = "trinket" ng-src = "images/item/{{game.stats.item6}}.png"></img>
+            </div>
+            <div class = "wardInfo">
+              <img class = "wardImage" src = "/images/item/2044.png">
+              <p class = "wardText">
+                {{game.stats.wardPlaced || 0}}
+              </p>
+              <img class = "wardImage" src = "/images/item/2043.png">
+              <p class = "wardText">
+                {{game.stats.visionWardsBought || 0}}
+              </p>
+              <img class = "wardImage" src = "/images/item/3341.png">
+              <p class = "wardText">
+                {{game.stats.wardKilled || 0}}
+              </p>
+            </div>
+        </div>
+        <div class = "goldInfo">
+          <p class = "date">{{game.createDate | date:'MM-dd-yyyy'}}</p>
+          <p class = "level"><strong>Level</strong> {{game.stats.level}}</p>
+          <p class = "gold">{{game.stats.goldEarned}} <strong>Gold</strong></p>
+          <p class = "cs">{{game.stats.minionsKilled + game.stats.neutralMinionsKilled || 0}} <strong>Creeps</strong></p>
+        </div>
+        <div class = "teamInfo">
+          <div ng-repeat = "player in game.fellowPlayers.teamChamps track by $index" class = "member">
+            <img class = "teamImage" src = "/images/champion/{{player}}.png"></img><p class = "team">{{player}}</p>
+          </div>
+        </div>
+        <div class = "enemyTeamInfo">
+          <div ng-repeat = "player in game.fellowPlayers.enemyChamps track by $index" class = "member">
+            <img class = "teamImage" ng-src = "/images/champion/{{player}}.png"></img><p class = "team">{{player}}</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Champion Stats</h3>
+
+      <div class = "championStats" ng-repeat = "champion in gameInfo.statInfo.champions | orderBy: stats.totalSessionsPlayed" ng-if="champion.id != 0">
+        <a href = "http://leagueoflegends.wikia.com/wiki/{{champion.champName}}" target = "_blank"><img title = "{{champion.champName}}" class = "statImage" ng-src = "images/champion/{{champion.champName}}.png"></img></a>
+        <div class = "stat"><p class = "inline">{{champion.stats.totalSessionsPlayed}} Games</p></div>
+        <div class = "stat"><p class = " inline">{{champion.stats.totalSessionsWon}} Win</p></div>
+        <div class = "stat"><p class = "inline"> {{champion.stats.totalSessionsLost}} Loss</p></div>
+        <div class = "stat"><p class = "inline">{{champion.stats.totalMinionKills / champion.stats.totalSessionsPlayed | number:1}} CS</p></div>
+        <div class = "stat kda"><p class = "inline">{{champion.stats.totalChampionKills / champion.stats.totalSessionsPlayed | number:1}} K</p></div>
+        <div class = "stat kda"><p class = "inline">{{champion.stats.totalDeathsPerSession / champion.stats.totalSessionsPlayed | number:1}} D</p></div>
+        <div class = "stat kda"><p class = "inline">{{champion.stats.totalAssists / champion.stats.totalSessionsPlayed | number:1}} A</p></div>
+      </div>
+
+      <footer>
+        League Stats isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+      </footer>
+    </div>
 
 
 
