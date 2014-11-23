@@ -6,10 +6,16 @@ body {
   font-family: 'Titillium Web', sans-serif;
 }
 
-.gameSummary {
-  display: none;
+.main {
+  margin-top: 25px;
 }
 
+.inline {
+  display: inline;
+}
+
+
+/* League Styles */
 
 .tiers {
    text-align: center;
@@ -41,6 +47,8 @@ body {
   color: #00841c;
   margin-bottom: 0px;
 }
+
+/* Item Tooltip Styles */
 
 .itemToolTip {
   display: none;
@@ -74,16 +82,35 @@ body {
   color: white;
 }
 
-.main {
-  margin-top: 25px;
+/* Past 10 match history styles */
+
+.gameSummary {
+  text-align: center;
+  background-color: #BDDFEB;
+  margin-bottom: 5px;
+  width: 100%;
+  height: 45px;
+  border: 1px solid black;
 }
 
-.gameInfo {
-  width: 100%;
-  height: 140px;
-  border: 1px solid black;
-  margin-bottom: 5px;
+.summary {
+  font-size: 16px;
+  padding: 10px;
+  float: left;
+  padding-left: 30px;
 }
+
+#average {
+  font-size: 16px;
+  float: left;
+  display: inline;
+  background-color: #aac8d3;
+  padding: 10px;
+  border-right: 1px solid black;
+}
+
+
+/* Match History Styles */
 
 .match {
   width: 100%;
@@ -164,7 +191,6 @@ body {
   float: left;
 }
 
-
 .wardInfo {
   width: 140px;
   height: 26px;
@@ -241,38 +267,11 @@ body {
   margin-top: 3px;
 }
 
+/* Champion stats styles */
 
-
-.champImage {
-  width: 80px;
-  margin-left: 10px;
-  margin-top: 10px;
-  float: left;
-}
-
-.gameSummary {
+h3 {
+  margin-top: 50px;
   text-align: center;
-  background-color: #BDDFEB;
-  margin-bottom: 5px;
-  width: 100%;
-  height: 45px;
-  border: 1px solid black;
-}
-
-.summary {
-  font-size: 16px;
-  padding: 10px;
-  float: left;
-  padding-left: 30px;
-}
-
-#average {
-  font-size: 16px;
-  float: left;
-  display: inline;
-  background-color: #aac8d3;
-  padding: 10px;
-  border-right: 1px solid black;
 }
 
 .championStats {
@@ -287,11 +286,6 @@ body {
   margin-bottom: 100px;
 }
 
-h3 {
-  margin-top: 50px;
-  text-align: center;
-}
-
 .stat {
   margin: 5px;
   padding: 5px;
@@ -301,7 +295,6 @@ h3 {
   text-align: center;
   border-radius: 5px;
   background-color: #ecebeb;
-
 }
 
 .kda {
@@ -313,19 +306,6 @@ h3 {
   border-radius: 10px;
   margin-left: 3px;
 }
-
-.championInfo {
-  width: 140px;
-}
-
-.summonerSpell {
-  width: 35px;
-  margin-left: 10px;
-  margin-top: 10px;
-  float: left;
-}
-
-
 
 .statInfo {
   margin-left: 10px; 
@@ -346,33 +326,6 @@ h3 {
 
 .assist {
   color: #00841c;
-}
-
-.cs {
-  color:  #520B6B;
-}
-
-.gold {
-  color:  #520B6B;
-}
-
-
-.trinket {
-  width: 50px;
-  height: 50px;
-  float: left;
-}
-
-.itemInfo {
-  float: right;
-  width: 185px;
-  height: 100px;
-  margin-top: -112px;
-  margin-right: 350px; 
-}
-
-.inline {
-  display: inline;
 }
 
 /* Customize container */
