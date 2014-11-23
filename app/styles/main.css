@@ -74,23 +74,149 @@ body {
   color: white;
 }
 
+.main {
+  margin-top: 25px;
+}
 
-.teamInfo {
-  width: 125px;
-  height: 115px;
-  float: right;
-  margin-top: -115px;
-  margin-right: 140px;
+.gameInfo {
+  width: 100%;
+  height: 140px;
+  border: 1px solid black;
+  margin-bottom: 5px;
+}
+
+.match {
+  width: 100%;
+  height: 140px;
+  margin-bottom: 5px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.championGameType {
+  width: 80px;
+  height: 120px;
+  margin-right: 10px;
+  float: left;
+}
+
+.championImage {
+  width: 80px;
+  height: 80px;
+}
+
+.gameType {
+  font-size: 8px;
+}
+
+.testKDA {
+  font-size: 16px;
+
+}
+
+.summonerSpells {
+  width: 35px;
+  height: 120px;
+  margin-right: 10px;
+  float: left;
+}
+
+.spell {
+  width: 35px;
+  height: 35px;
+  margin-bottom: 10px;
+}
+
+.itemsContainer {
+  margin-left: -2px;
+  margin-top: -2px;
+  margin-right: 10px;
+  height: 120px;
+  width: 190px;
+  float: left;
+}
+
+.item {
+  border-radius: 5px;
+  margin: 2px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+
+.mainItems {
+  width: 140px;
+  height: 94px;
+  float: left;
+}
+
+.trinketItem {
+  width: 50px;
+  height: 50px;
+  margin-top: 22px;
+  float: left;
+}
+
+.trinket {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  float: left;
+}
+
+
+.wardInfo {
+  width: 140px;
+  height: 26px;
+  float: left;
+}
+
+.wardImage {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  margin-top: 4px;
+  float: left;
+  border-radius: 5px;
+}
+
+.wardText {
+  float: left;
+  margin-right: 5px;
+  margin-top: 3px;
+}
+
+.goldInfo {
+  float: left;
+  width: 80px;
+  margin-right: 15px;
+}
+
+.cs {
+  color:  #520B6B;
+}
+
+.gold {
+  color:  #520B6B;
+}
+
+.date {
+  font-size: 12px;
+}
+
+.enemyTeamInfo {
+  width: 120px;
+  height: 120px;
+  float: left;
   background-color: #ecebeb;
   border: 1px solid black;
   border-radius: 2px;
 }
 
-.enemyTeamInfo {
-  width: 125px;
-  height: 115px;
-  float: right;
-  margin-top: -115px;
+.teamInfo {
+  width: 120px;
+  height: 120px;
+  float: left;
   margin-right: 10px;
   background-color: #ecebeb;
   border: 1px solid black;
@@ -108,130 +234,14 @@ body {
 }
 
 .member {
-  display: block;
   margin-left: 5px;
 }
-.main {
-  margin-top: 25px;
-}
 
-.gameInfo {
-  width: 100%;
-  height: 140px;
-  border: 1px solid black;
-  margin-bottom: 5px;
-}
-
-.test {
-  background-color: lightgrey;
-  width: 100%;
-  height: 140px;
-  margin-bottom: 5px;
-  padding: 10px;
-  border: 1px solid black;
-}
-
-.testChamp {
-  background-color: white;
-  width: 80px;
-  height: 120px;
-  margin-right: 10px;
-  float: left;
-}
-
-.testImage {
-  background-color: red;
-  width: 80px;
-  height: 80px;
-}
-
-.testGameType {
-  font-size: 8px;
-}
-
-.testKDA {
-  font-size: 16px;
-
-}
-
-.testSpells {
-  background-color: green;
-  width: 35px;
-  height: 120px;
-  margin-right: 10px;
-  float: left;
-}
-
-.testSpell {
-  width: 35px;
-  height: 35px;
-  background-color: orange;
-  margin-bottom: 10px;
-}
-
-.testItems {
-  margin-left: -2px;
-  margin-top: -2px;
-  background-color: pink;
-  height: 120px;
-  width: 200px;
-  float: left;
-}
-
-.testItem {
-  margin: 2px;
-  width: 40px;
-  height: 40px;
-  background-color: grey;
-  display: inline-block;
-}
-
-.testMainItems {
-  width: 140px;
-  height: 94px;
-  background-color: red;
-  float: left;
-}
-
-.testTrinket {
-  width: 50px;
-  height: 50px;
-  float: left;
-}
-
-.testTrinketItem {
-  width: 50px;
-  height: 50px;
-  margin-top: 22px;
-  background-color: yellow;
-}
-
-.testItemWrapper {
-  width: 200px;
-  height: 95px;
-}
-
-.testWardInfo {
-  width: 140px;
-  height: 26px;
-  float: left;
-  background-color: purple;
-}
-
-.testWardImage {
-  width: 20px;
-  height: 20px;
-  background-color: orange;
-  margin-right: 5px;
-  margin-top: 4px;
-  float: left;
-}
-
-.testWardText {
-  float: left;
-  margin-right: 5px;
+.member:first-of-type {
   margin-top: 3px;
 }
+
+
 
 .champImage {
   width: 80px;
@@ -315,10 +325,7 @@ h3 {
   float: left;
 }
 
-.gameType {
-  font-size: 8px;
-  margin-bottom: 0px;
-}
+
 
 .statInfo {
   margin-left: 10px; 
@@ -327,26 +334,7 @@ h3 {
   display: inline-block;
 }
 
-.wardInfo {
-  margin-top: 5px;
-  margin-left: 2px;
-}
 
-.wardImage {
-  width: 15px;
-  margin-right: 5px;
-  margin-bottom: 2px;
-}
-
-.wardText {
-  display: inline;
-  margin: 5px;
-}
-
-.date {
-  font-size: 12px;
-  margin-left: 5px;
-}
 
 .kill {
   color: #00841c;
@@ -361,44 +349,26 @@ h3 {
 }
 
 .cs {
-  margin-left: 5px;
   color:  #520B6B;
 }
 
 .gold {
-  margin-left: 5px;
   color:  #520B6B;
 }
 
-.level {
-  margin-left: 5px;
-
-}
-
-
-.item {
-  border-radius: 5px;
-  width: 40px;
-  margin: 1px;
-}
 
 .trinket {
-  width: 35px;
-
+  width: 50px;
+  height: 50px;
+  float: left;
 }
+
 .itemInfo {
   float: right;
   width: 185px;
   height: 100px;
   margin-top: -112px;
   margin-right: 350px; 
-}
-
-.goldInfo {
-  float: left;
-  margin-left: 345px;
-  margin-top: -110px;
-
 }
 
 .inline {
