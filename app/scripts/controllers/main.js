@@ -45,7 +45,7 @@ angular.module('leagueApp')
 
 		}).
 		error (function() {
-			alert('Summoner Name not Found');
+			alert('Summoner Name not Found(Supports NA Only)');
 			});
 		};
 
@@ -56,10 +56,10 @@ angular.module('leagueApp')
 			gameInfo = json.games;
 			$scope.gameInfo = gameInfo;
 			$scope.massFunctionCall();
-			$('.gameSummary').show();
+			$('.hideAtStart').show();
 		}).
 		error (function() {
-			alert('not ok');
+			console.log('Match history not found');
 		});
 	};
 
@@ -99,7 +99,7 @@ angular.module('leagueApp')
 
 		}).
 		error (function() {
-			alert('Champion Info not found');
+			console.log('Champion Info not found');
 		});
 	};
 
@@ -112,7 +112,7 @@ angular.module('leagueApp')
 
 		}).
 		error (function() {
-			alert('League Info not found');
+			console.log('Summoner has no league info');
 		});
 	};
 
@@ -262,7 +262,7 @@ angular.module('leagueApp')
 		    $('.itemToolTip').show();
 		}).
 		error (function() {
-			alert('Item not found');
+			console.log(item + ': Item not found');
 		});
 	}
 	$scope.itemLeave = function() {
