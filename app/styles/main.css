@@ -201,6 +201,7 @@ footer {
   margin: 2px;
   width: 40px;
   height: 40px;
+  border: 1px solid black;
   display: inline-block;
 }
 
@@ -222,6 +223,8 @@ footer {
   height: 50px;
   border-radius: 5px;
   float: left;
+  border: 1px solid black;
+
 }
 
 .wardInfo {
@@ -361,6 +364,64 @@ h3 {
   color: #00841c;
 }
 
+@media (max-width: 900px) {
+  .match {
+    height: 280px;
+  }
+  .rows {
+    height: 140px;
+  }
+  .enemyTeamInfo {
+    width: 45%;
+  }
+
+  .teamInfo {
+    width: 45%;
+  }
+}
+
+@media (max-width: 580px) {
+  .match {
+    height: 420px;
+  }
+  .miniRows {
+    height: 140px;
+    margin: 0 auto;
+
+  }
+  .rows {
+    height: 280px;
+  }
+  .item {
+    height: 30px;
+    width: 30px;
+
+  }
+  .trinket {
+    height: 35px;
+    width: 35px;
+  }
+  .trinketItem {
+    margin-top: -50px;
+    margin-left: 75px;
+  }
+  .itemsContainer {
+    width: 110px;
+  }
+  .mainItems {
+    width: 100px;
+  }
+  .wardInfo {
+    margin-top: 10px;
+  }
+  .member {
+    font-size: 12px;
+  }
+  .goldInfo {
+    text-align: right;
+  }
+}
+
 /* Customize container */
 @media (min-width: 768px) {
   .container {
@@ -371,24 +432,6 @@ h3 {
   margin: 30px 0;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
-}
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
@@ -397,13 +440,5 @@ h3 {
   .footer {
     padding-left: 0;
     padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
   }
 }
