@@ -55,25 +55,29 @@
       </div>
     </div>
 
-    <div class = "gameSummary hideAtStart">
+<!--     <div class = "gameSummary hideAtStart">
       <p id = "average">10 Game Average:</p>
       <p class = "summary inline">{{gameInfo.win}} wins / {{gameInfo.lose}} losses</p>
       <p class = "summary inline">{{(gameInfo.win /10)*100}} % win ratio</p> 
       <p class = "summary inline">{{gameInfo.killAverage}} / {{gameInfo.deathAverage}} / {{gameInfo.assistAverage}}</p>
       <p class = "summary inline">{{gameInfo.csAverage}} Creeps</p>
-    </div>
+    </div> -->
 
 
      <div class = "match" ng-repeat = "game in gameInfo" style = "background-color: {{game.color}}">
-        <div class = "championGameType">
-          <img title = "{{game.champNames}}" class = "championImage" ng-src = "{{game.champImages}}"></img>
-          <p class = "gameType">{{game.subType}}</p>
-          <p class = "testKDA">{{game.stats.championsKilled || 0}} / {{game.stats.numDeaths || 0}} / {{game.stats.assists || 0}}</p>
+      <div class = "rows">
+        <div class = "miniRows">       
+          <div class = "championGameType">
+            <img title = "{{game.champNames}}" class = "championImage" ng-src = "{{game.champImages}}"></img>
+            <p class = "gameType">{{game.subType}}</p>
+            <p class = "testKDA">{{game.stats.championsKilled || 0}} / {{game.stats.numDeaths || 0}} / {{game.stats.assists || 0}}</p>
+          </div>
+          <div class = "summonerSpells">
+            <img title = "{{game.spellNames[0]}}" class = "spell" ng-src = "{{game.spellImages[0]}}"></img>
+            <img title = "{{game.spellNames[1]}}" class = "spell" ng-src = "{{game.spellImages[1]}}"></img>
+          </div>
         </div>
-        <div class = "summonerSpells">
-          <img title = "{{game.spellNames[0]}}" class = "spell" ng-src = "{{game.spellImages[0]}}"></img>
-          <img title = "{{game.spellNames[1]}}" class = "spell" ng-src = "{{game.spellImages[1]}}"></img>
-        </div>
+        <div class = "miniRows">
         <div class = "itemsContainer">
             <div class = "mainItems">
               <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item0)" title = "{{game.stats.item0}}" class = "item" ng-src = "images/item/{{game.stats.item0}}.png"></img>
@@ -101,13 +105,18 @@
                 {{game.stats.wardKilled || 0}}
               </p>
             </div>
-        </div>
+          </div>
+        
+      
         <div class = "goldInfo">
           <p class = "date">{{game.createDate | date:'MM-dd-yyyy'}}</p>
           <p class = "level"><strong>Level</strong> {{game.stats.level}}</p>
           <p class = "gold">{{game.stats.goldEarned}} <strong>Gold</strong></p>
           <p class = "cs">{{game.stats.minionsKilled + game.stats.neutralMinionsKilled || 0}} <strong>Creeps</strong></p>
         </div>
+        </div>
+      </div>
+      <div class = "rows">
         <div class = "teamInfo">
           <div ng-repeat = "player in game.fellowPlayers.teamChamps track by $index" class = "member">
             <img class = "teamImage" src = "/images/champion/{{player}}.png"></img><p class = "team">{{player}}</p>
@@ -117,6 +126,7 @@
           <div ng-repeat = "player in game.fellowPlayers.enemyChamps track by $index" class = "member">
             <img class = "teamImage" ng-src = "/images/champion/{{player}}.png"></img><p class = "team">{{player}}</p>
           </div>
+        </div>
         </div>
       </div>
 
