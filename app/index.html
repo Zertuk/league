@@ -21,7 +21,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-  <div ng-controller = 'MainCtrl'>
+  <div class = "wrapper" ng-controller = 'MainCtrl'>
     <div class = "container">
 
       <div class = "itemToolTip">
@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <div class = "gameSummary">
+    <div class = "gameSummary hideAtStart">
       <p id = "average">10 Game Average:</p>
       <p class = "summary inline">{{gameInfo.win}} wins / {{gameInfo.lose}} losses</p>
       <p class = "summary inline">{{(gameInfo.win /10)*100}} % win ratio</p> 
@@ -88,15 +88,15 @@
               <img ng-mouseleave = "itemLeave()" ng-mouseenter = "itemHover($event, game.stats.item6)" class = "trinket" ng-src = "images/item/{{game.stats.item6}}.png"></img>
             </div>
             <div class = "wardInfo">
-              <img class = "wardImage" src = "/images/item/2044.png">
+              <img title = "Wards Placed" class = "wardImage" src = "/images/item/2044.png">
               <p class = "wardText">
                 {{game.stats.wardPlaced || 0}}
               </p>
-              <img class = "wardImage" src = "/images/item/2043.png">
+              <img title = "Vision Wards Bought" class = "wardImage" src = "/images/item/2043.png">
               <p class = "wardText">
                 {{game.stats.visionWardsBought || 0}}
               </p>
-              <img class = "wardImage" src = "/images/item/3341.png">
+              <img title = "Wards Killed" class = "wardImage" src = "/images/item/3341.png">
               <p class = "wardText">
                 {{game.stats.wardKilled || 0}}
               </p>
@@ -120,7 +120,7 @@
         </div>
       </div>
 
-      <h3>Champion Stats</h3>
+      <h3 class = "hideAtStart">Champion Stats</h3>
 
       <div class = "championStats" ng-repeat = "champion in gameInfo.statInfo.champions | orderBy: stats.totalSessionsPlayed" ng-if="champion.id != 0">
         <a href = "http://leagueoflegends.wikia.com/wiki/{{champion.champName}}" target = "_blank"><img title = "{{champion.champName}}" class = "statImage" ng-src = "images/champion/{{champion.champName}}.png"></img></a>
@@ -132,12 +132,13 @@
         <div class = "stat kda"><p class = "inline">{{champion.stats.totalDeathsPerSession / champion.stats.totalSessionsPlayed | number:1}} D</p></div>
         <div class = "stat kda"><p class = "inline">{{champion.stats.totalAssists / champion.stats.totalSessionsPlayed | number:1}} A</p></div>
       </div>
-
-      <footer>
-        League Stats isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
-      </footer>
     </div>
+  </div>
 
+
+    <footer>
+      League Stats isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+    </footer>
 
 
     <!--[if lt IE 9]>
