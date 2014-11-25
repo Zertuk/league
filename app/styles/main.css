@@ -170,7 +170,7 @@ footer {
 }
 
 .testKDA {
-  font-size: 16px;
+  font-size: 15px;
 
 }
 
@@ -224,7 +224,6 @@ footer {
   border-radius: 5px;
   float: left;
   border: 1px solid black;
-
 }
 
 .wardInfo {
@@ -372,26 +371,42 @@ h3 {
     height: 140px;
   }
   .enemyTeamInfo {
-    width: 45%;
+    width: 48%;
+    float: right;
   }
-
   .teamInfo {
-    width: 45%;
+    width: 48%;
+  }
+  .goldInfo {
+    float: right;
   }
 }
 
 @media (max-width: 580px) {
   .match {
     height: 420px;
+    width: 100%;
   }
   .miniRows {
     height: 140px;
     margin: 0 auto;
-
+    margin-bottom: 5px;
+    display: inline-block;
   }
+
   .rows {
     height: 280px;
+    text-align: center;
   }
+
+  .enemyTeamInfo {
+    text-align: left;
+  }
+
+  .teamInfo {
+    text-align: left;
+  }
+
   .item {
     height: 30px;
     width: 30px;
