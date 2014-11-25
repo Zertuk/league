@@ -1,9 +1,17 @@
-/* Space out content a bit */
+/* General styles */
+* {
+  margin: 0;
+}
+
 body {
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: #ececec;
   font-family: 'Titillium Web', sans-serif;
+}
+
+html, body {
+  height: 100%;
 }
 
 .main {
@@ -12,6 +20,31 @@ body {
 
 .inline {
   display: inline;
+}
+
+.hideAtStart {
+  display: none;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -150px;
+}
+
+.wrapper:after {
+  content: "";
+  display: block;
+}
+
+
+footer, .wrapper:after {
+  height: 150px;
+}
+
+footer {
+  text-align: center;
+  width: 66%;
+  margin: 0 auto;
 }
 
 
