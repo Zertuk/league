@@ -55,17 +55,18 @@
       </div>
     </div>
 
-<!--     <div class = "gameSummary hideAtStart">
+    <div class = "gameSummary hideAtStart">
       <p id = "average">10 Game Average:</p>
       <p class = "summary inline">{{gameInfo.win}} wins / {{gameInfo.lose}} losses</p>
       <p class = "summary inline">{{(gameInfo.win /10)*100}} % win ratio</p> 
       <p class = "summary inline">{{gameInfo.killAverage}} / {{gameInfo.deathAverage}} / {{gameInfo.assistAverage}}</p>
       <p class = "summary inline">{{gameInfo.csAverage}} Creeps</p>
-    </div> -->
+    </div>
 
 
      <div class = "match" ng-repeat = "game in gameInfo" style = "background-color: {{game.color}}">
       <div class = "rows">
+        <div class = "testRow">
         <div class = "miniRows">       
           <div class = "championGameType">
             <img title = "{{game.champNames}}" class = "championImage" ng-src = "{{game.champImages}}"></img>
@@ -76,6 +77,7 @@
             <img title = "{{game.spellNames[0]}}" class = "spell" ng-src = "{{game.spellImages[0]}}"></img>
             <img title = "{{game.spellNames[1]}}" class = "spell" ng-src = "{{game.spellImages[1]}}"></img>
           </div>
+        </div>
         </div>
         <div class = "miniRows">
         <div class = "itemsContainer">
