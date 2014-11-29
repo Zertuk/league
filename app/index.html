@@ -71,7 +71,7 @@
           <div class = "championGameType">
             <img title = "{{game.champNames}}" class = "championImage" ng-src = "{{game.champImages}}"></img>
             <p class = "gameType">{{game.subType}}</p>
-            <p class = "testKDA">{{game.stats.championsKilled || 0}} / {{game.stats.numDeaths || 0}} / {{game.stats.assists || 0}}</p>
+            <p class = "testKDA"><p class = "kill">{{game.stats.championsKilled || 0}}</p> / <p class = "death">{{game.stats.numDeaths || 0}}</p> / <p class = "assist">{{game.stats.assists || 0}}</p></p>
           </div>
           <div class = "summonerSpells">
             <img title = "{{game.spellNames[0]}}" class = "spell" ng-src = "{{game.spellImages[0]}}"></img>
@@ -134,7 +134,21 @@
 
       <h3 class = "hideAtStart">Champion Stats</h3>
 
-      <div class = "championStats" ng-repeat = "champion in gameInfo.statInfo.champions | orderBy: stats.totalSessionsPlayed" ng-if="champion.id != 0">
+      <div class = "championStats" ng-repeat = "champion in arr | orderBy: 'name'" ng-if="champion.name != undefined">
+        <a href = "http://leagueoflegends.wikia.com/wiki/{{champion.name}}" target = "_blank"><img title = "{{champion.name}}" class = "statImage" ng-src = "images/champion/{{champion.name}}.png"></img></a>
+        <div class = "stat"><p class = "inline">{{champion.stats[0]}} Games</p></div>
+        <div class = "stat"><p class = " inline">{{champion.stats[1]}} Win</p></div>
+        <div class = "stat"><p class = "inline">{{champion.stats[2]}} Loss</p></div>
+        <div class = "stat"><p class = "inline">{{champion.stats[3] | number:1}} CS</p></div>
+        <div class = "stat kda"><p class = "inline">{{champion.stats[4] | number:1}} K</p></div>
+        <div class = "stat kda"><p class = "inline">{{champion.stats[5] | number:1}} D</p></div>
+        <div class = "stat kda"><p class = "inline">{{champion.stats[6] | number:1}} A</p></div>
+      </div>
+    </div>
+
+
+
+      <!-- <div class = "championStats" ng-repeat = "champion in gameInfo.statInfo.champions | orderBy: stats.totalSessionsPlayed" ng-if="champion.id != 0">
         <a href = "http://leagueoflegends.wikia.com/wiki/{{champion.champName}}" target = "_blank"><img title = "{{champion.champName}}" class = "statImage" ng-src = "images/champion/{{champion.champName}}.png"></img></a>
         <div class = "stat"><p class = "inline">{{champion.stats.totalSessionsPlayed}} Games</p></div>
         <div class = "stat"><p class = " inline">{{champion.stats.totalSessionsWon}} Win</p></div>
@@ -143,14 +157,13 @@
         <div class = "stat kda"><p class = "inline">{{champion.stats.totalChampionKills / champion.stats.totalSessionsPlayed | number:1}} K</p></div>
         <div class = "stat kda"><p class = "inline">{{champion.stats.totalDeathsPerSession / champion.stats.totalSessionsPlayed | number:1}} D</p></div>
         <div class = "stat kda"><p class = "inline">{{champion.stats.totalAssists / champion.stats.totalSessionsPlayed | number:1}} A</p></div>
-      </div>
+      </div> -->
     </div>
   </div>
 
-
-    <footer>
-      League Stats isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
-    </footer>
+  <footer>
+    League Stats isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+  </footer>
 
 
     <!--[if lt IE 9]>
