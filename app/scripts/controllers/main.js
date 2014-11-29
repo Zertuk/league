@@ -25,7 +25,7 @@ var csAverage;
 var assistAverage;
 var deathAverage;
 var test;
-var arr = new Array;
+var arr = [];
 
 
 angular.module('leagueApp')
@@ -73,12 +73,15 @@ angular.module('leagueApp')
 			$scope.statLookUp();
 			$scope.leagueLookUp();
 			$scope.gameAverages(gameInfo);
+			$scope.makeArray();
 	};
 
 	//api call for summoner champion stats by summoner id, also sets champion names
 	$scope.statLookUp = function() {
 		$http.get('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + summonerId + '/ranked?season=SEASON4&api_key=' + apiKey).
 		success (function(json) {
+			arr = [];
+			$scope.arr = new Array;
 			statInfo = json;
 			var i = 0;
 			while (statInfo.champions[i].id !== undefined) {
@@ -88,6 +91,22 @@ angular.module('leagueApp')
 					//adds 0 value since we skippde it earlier
 					statInfo.champions[0].champName = champSelect(statInfo.champions[0].id);
 					$scope.gameInfo.statInfo = statInfo;
+					for (var j = 0; j < statInfo.champions.length; j++) {
+
+
+					arr[j] = {name: statInfo.champions[j].champName, 
+						stats: [statInfo.champions[j].stats.totalSessionsPlayed,
+						 statInfo.champions[j].stats.totalSessionsWon,
+						 statInfo.champions[j].stats.totalSessionsLost,
+						 statInfo.champions[j].stats.totalMinionKills / statInfo.champions[j].stats.totalSessionsPlayed,
+						 statInfo.champions[j].stats.totalChampionKills / statInfo.champions[j].stats.totalSessionsPlayed,
+						 statInfo.champions[j].stats.totalDeathsPerSession / statInfo.champions[j].stats.totalSessionsPlayed,
+						 statInfo.champions[j].stats.totalAssists / statInfo.champions[j].stats.totalSessionsPlayed
+							]};
+
+					$scope.arr.push(arr[j]);
+					}
+
 					return;
 				}
 				else {
@@ -95,6 +114,7 @@ angular.module('leagueApp')
 				statInfo.champions[i].champName = champSelect(statInfo.champions[i].id);
 				}
 			}
+			
 			
 
 		}).
@@ -268,6 +288,12 @@ angular.module('leagueApp')
 	$scope.itemLeave = function() {
 		$('.itemToolTip').hide();
 	}
+
+	$scope.makeArray = function() {
+
+	}
+
+
 	//default search!
 	$scope.defaultSearch = function() {
 		$scope.summonerName = 'Dyrus';
