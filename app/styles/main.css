@@ -45,6 +45,7 @@ footer {
   text-align: center;
   width: 66%;
   margin: 0 auto;
+  font-size: 10px;
 }
 
 
@@ -171,7 +172,6 @@ footer {
 
 .testKDA {
   font-size: 15px;
-
 }
 
 .summonerSpells {
@@ -353,14 +353,17 @@ h3 {
 
 .kill {
   color: #00841c;
+  display: inline;
 }
 
 .death {
   color: #c90707;
+  display: inline;
 }
 
 .assist {
   color: #00841c;
+  display: inline;
 }
 
 @media (max-width: 900px) {
@@ -384,6 +387,7 @@ h3 {
     font-size: 13px;
     padding-left: 10px;
     padding-top: 13px;
+    display: inline;
   }
 }
 
