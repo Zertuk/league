@@ -321,6 +321,19 @@ h3 {
   margin-bottom: 100px;
 }
 
+.championStatsFirst {
+  height: 38px;
+  margin-bottom: 5px;
+  background-color: #b2b2b2;
+  border: 1px solid black;
+}
+
+.testbox {
+  background-color: #cccccc;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+}
 .stat {
   margin: 5px;
   padding: 5px;
