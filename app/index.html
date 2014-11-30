@@ -133,16 +133,25 @@
       </div>
 
       <h3 class = "hideAtStart">Champion Stats</h3>
-
-      <div class = "championStats" ng-repeat = "champion in arr | orderBy: 'name'" ng-if="champion.name != undefined">
+      <div class = "championStatsFirst hideAtStart">
+        <img  ng-click = "orderByValueAssign('name')" title = "Sort By Champion" class = "statImage" ng-src = "images/champion/janna.png"></img>
+        <button ng-click = "orderByValueAssign('games')" class = "stat"><p class = "inline">Games</p></button>
+        <button ng-click = "orderByValueAssign('won')"class = "stat"><p class = " inline">Wins</p></button>
+        <button ng-click = "orderByValueAssign('lost')"class = "stat"><p class = "inline">Losses</p></button>
+        <button ng-click = "orderByValueAssign('cs')" class = "stat"><p class = "inline">CS</p></button>
+        <button ng-click = "orderByValueAssign('kills')" class = "stat kda"><p class = "inline">Kills</p></button>
+        <button ng-click = "orderByValueAssign('deaths')" class = "stat kda"><p class = "inline">Deaths</p></button>
+        <button ng-click = "orderByValueAssign('assists')" class = "stat kda"><p class = "inline">Assists</p></button>
+      </div>
+      <div class = "championStats" ng-repeat = "champion in arr | orderBy: orderByValue" ng-if="champion.name != undefined">
         <a href = "http://leagueoflegends.wikia.com/wiki/{{champion.name}}" target = "_blank"><img title = "{{champion.name}}" class = "statImage" ng-src = "images/champion/{{champion.name}}.png"></img></a>
-        <div class = "stat"><p class = "inline">{{champion.stats[0]}} Games</p></div>
-        <div class = "stat"><p class = " inline">{{champion.stats[1]}} Win</p></div>
-        <div class = "stat"><p class = "inline">{{champion.stats[2]}} Loss</p></div>
-        <div class = "stat"><p class = "inline">{{champion.stats[3] | number:1}} CS</p></div>
-        <div class = "stat kda"><p class = "inline">{{champion.stats[4] | number:1}} K</p></div>
-        <div class = "stat kda"><p class = "inline">{{champion.stats[5] | number:1}} D</p></div>
-        <div class = "stat kda"><p class = "inline">{{champion.stats[6] | number:1}} A</p></div>
+        <div class = "stat"><p class = "inline">{{champion.games}} Games</p></div>
+        <div class = "stat"><p class = " inline">{{champion.won}} Win</p></div>
+        <div class = "stat"><p class = "inline">{{champion.lost}} Loss</p></div>
+        <div class = "stat"><p class = "inline">{{champion.cs | number:1}} CS</p></div>
+        <div class = "stat kda"><p class = "inline">{{champion.kills | number:1}} K</p></div>
+        <div class = "stat kda"><p class = "inline">{{champion.deaths | number:1}} D</p></div>
+        <div class = "stat kda"><p class = "inline">{{champion.assists | number:1}} A</p></div>
       </div>
     </div>
 
