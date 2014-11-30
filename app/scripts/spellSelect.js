@@ -16,6 +16,10 @@ function spellSelect(id) {
 		break;
 		case 11: return "Smite"
 		break;
+		case 21: return "Barrier"
+		break;
+		case 10: return "Revive"
+		break;
 
 	}
 }
