@@ -242,5 +242,7 @@ function champSelect(id) {
 		break;
 		case 412: return "Thresh"
 		break;
+		case 429: return "Kalista"
+		break;
 	}
 }
