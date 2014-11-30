@@ -73,7 +73,6 @@ angular.module('leagueApp')
 			$scope.statLookUp();
 			$scope.leagueLookUp();
 			$scope.gameAverages(gameInfo);
-			$scope.makeArray();
 	};
 
 	//api call for summoner champion stats by summoner id, also sets champion names
@@ -94,17 +93,18 @@ angular.module('leagueApp')
 					for (var j = 0; j < statInfo.champions.length; j++) {
 
 
-					arr[j] = {name: statInfo.champions[j].champName, 
-						stats: [statInfo.champions[j].stats.totalSessionsPlayed,
-						 statInfo.champions[j].stats.totalSessionsWon,
-						 statInfo.champions[j].stats.totalSessionsLost,
-						 statInfo.champions[j].stats.totalMinionKills / statInfo.champions[j].stats.totalSessionsPlayed,
-						 statInfo.champions[j].stats.totalChampionKills / statInfo.champions[j].stats.totalSessionsPlayed,
-						 statInfo.champions[j].stats.totalDeathsPerSession / statInfo.champions[j].stats.totalSessionsPlayed,
-						 statInfo.champions[j].stats.totalAssists / statInfo.champions[j].stats.totalSessionsPlayed
-							]};
+					arr[j] = {name: statInfo.champions[j].champName,
+							games: statInfo.champions[j].stats.totalSessionsPlayed,
+							won: statInfo.champions[j].stats.totalSessionsWon,
+							lost: statInfo.champions[j].stats.totalSessionsLost,
+							cs: statInfo.champions[j].stats.totalMinionKills / statInfo.champions[j].stats.totalSessionsPlayed,
+							kills: statInfo.champions[j].stats.totalChampionKills / statInfo.champions[j].stats.totalSessionsPlayed,
+						 	deaths: statInfo.champions[j].stats.totalDeathsPerSession / statInfo.champions[j].stats.totalSessionsPlayed,
+						 	assists: statInfo.champions[j].stats.totalAssists / statInfo.champions[j].stats.totalSessionsPlayed
+							};
 
 					$scope.arr.push(arr[j]);
+					$scope.orderByValue = 'name';
 					}
 
 					return;
@@ -289,8 +289,15 @@ angular.module('leagueApp')
 		$('.itemToolTip').hide();
 	}
 
-	$scope.makeArray = function() {
-
+	$scope.orderByValueAssign = function(input) {
+		if (input == $scope.orderByValInverse) {
+			$scope.orderByValue = input;
+			$scope.orderByValInverse = '-' + input
+		}
+		else {
+			$scope.orderByValue = '-' + input;
+			$scope.orderByValInverse = input;
+		}
 	}
 
 
