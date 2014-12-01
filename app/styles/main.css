@@ -230,6 +230,7 @@ footer {
   width: 140px;
   height: 26px;
   float: left;
+  margin-left: 10px;
 }
 
 .wardImage {
