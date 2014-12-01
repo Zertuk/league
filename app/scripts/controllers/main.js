@@ -306,5 +306,5 @@ angular.module('leagueApp')
 		$scope.summonerName = 'Dyrus';
 		$scope.apiCall();
 	};
-	// $scope.defaultSearch();
+	$scope.defaultSearch();
   });
