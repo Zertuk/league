@@ -20,6 +20,9 @@ function spellSelect(id) {
 		break;
 		case 10: return "Revive"
 		break;
-
+		case 30: return "Poro Toss"
+		break;
+		case 31: return "To The King!"
+		break;
 	}
 }
