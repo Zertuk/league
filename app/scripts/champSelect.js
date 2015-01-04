@@ -244,5 +244,7 @@ function champSelect(id) {
 		break;
 		case 429: return "Kalista"
 		break;
+		case 421: return "Rek'Sai"
+		break;
 	}
 }
