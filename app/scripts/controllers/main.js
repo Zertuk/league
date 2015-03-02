@@ -7,39 +7,18 @@
  * # MainCtrl
  * Controller of the leagueApp
  */
-var summonerId;
 var apiKey = '85df569c-14df-466c-966b-81f186ed0940';
-var gameInfo;
-var champNames = [];
-var champImages = [];
-var spellNames = [];
-var spellImages = [];
-var teamColor = [];
-var teamChamps = [];
-var enemyChamps = [];
-var itemInfo = [];
-var statInfo = [];
-var leagueInfo = [];
-var killAverage;
-var csAverage;
-var assistAverage;
-var deathAverage;
-var test;
-var arr = [];
-
 
 angular.module('leagueApp')
   .controller('MainCtrl', function ($scope, $http) {
   	//api call for the summoner id by name, changes summoner name to not include spaces to prevent errors
   	//runs matchLookUp api call to continue
   	$scope.apiCall = function() {
-		console.log($scope.summonerName);
 		$http.get('https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/' + $scope.summonerName + '?api_key=' + apiKey).
 		success (function(json) {
 			var summonerNameMinusSpaces = $scope.summonerName.replace(' ', '');
 			summonerNameMinusSpaces = summonerNameMinusSpaces.toLowerCase().trim();
-			summonerId = json[summonerNameMinusSpaces].id;
-			console.log(summonerId);
+			$scope.summonerId = json[summonerNameMinusSpaces].id;
 			$scope.matchLookUp();
 
 
@@ -51,11 +30,10 @@ angular.module('leagueApp')
 
 	//api call for match look up using summoner Id, also runs a mass function call for all information extracted from gameInfo and runs other api calls
 	$scope.matchLookUp = function() {
-		$http.get('https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/' + summonerId + '/recent' + '?api_key=' + apiKey).
+		$http.get('https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/' + $scope.summonerId + '/recent' + '?api_key=' + apiKey).
 		success (function(json) {
-			gameInfo = json.games;
-			$scope.gameInfo = gameInfo;
-			$scope.massFunctionCall();
+			$scope.gameInfo = json.games;
+			$scope.massFunctionCall($scope.gameInfo);
 			$('.hideAtStart').show();
 		}).
 		error (function() {
@@ -64,7 +42,7 @@ angular.module('leagueApp')
 	};
 
 	//function run all other api calls and extract other game info
-	$scope.massFunctionCall = function() {
+	$scope.massFunctionCall = function(gameInfo) {
 			$scope.championIdNameMap(gameInfo);
 			$scope.spellIdNameMap(gameInfo);
 			$scope.teamColor(gameInfo);
@@ -77,11 +55,11 @@ angular.module('leagueApp')
 
 	//api call for summoner champion stats by summoner id, also sets champion names
 	$scope.statLookUp = function() {
-		$http.get('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + summonerId + '/ranked?season=SEASON4&api_key=' + apiKey).
+		$http.get('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + $scope.summonerId + '/ranked?season=SEASON4&api_key=' + apiKey).
 		success (function(json) {
-			arr = [];
+			var arr = [];
 			$scope.arr = new Array;
-			statInfo = json;
+			var statInfo = json;
 			var i = 0;
 			while (statInfo.champions[i].id !== undefined) {
 				//adds i value here so that if the next value is undefined we dip out so it doesnt break
@@ -125,9 +103,10 @@ angular.module('leagueApp')
 
 	//api call for league info using summoner Id
 	$scope.leagueLookUp = function() {
-		$http.get('https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/' + summonerId + '/entry?api_key=' + apiKey).
+		$http.get('https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/' + $scope.summonerId + '/entry?api_key=' + apiKey).
 		success (function(json) {
-			leagueInfo = json[summonerId];
+			var leagueInfo = [];
+			leagueInfo = json[$scope.summonerId];
 			$scope.gameInfo[0].leagueInfo = leagueInfo;
 
 		}).
@@ -139,6 +118,8 @@ angular.module('leagueApp')
 	//maps all champion id for summoners previous 10 games / assigns image location
 	$scope.championIdNameMap = function(data) {
 		for (var i = 0; i < 10; i++) {
+			var champNames = [];
+			var champImages = [];
         	champNames[i] = champSelect(data[i].championId);
         	$scope.gameInfo[i].champNames = champNames[i];
         	champImages[i] = '/images/champion/' + champNames[i] + '.png';
@@ -151,6 +132,8 @@ angular.module('leagueApp')
 	//summoner spell map using spellSelect function, assigns image location
 	$scope.spellIdNameMap = function(data) {
 		for (var i = 0; i < 10; i++) {
+			var spellNames = [];
+			var spellImages = [];
 			spellNames[i] = [spellSelect(data[i].spell1), spellSelect(data[i].spell2)];
 			$scope.gameInfo[i].spellNames = spellNames[i];
 			spellImages[i] = ['/images/spells/' + spellNames[i][0] + '.png' , '/images/spells/' + spellNames[i][1] + '.png'];
@@ -164,6 +147,8 @@ angular.module('leagueApp')
 	//i controls the player index inside of each match
 	//k represents the position that the player is added at on their respective team
 	$scope.teamChampMap = function(data) {
+		var teamChamps = [];
+		var enemyChamps = [];
 		for (var j = 0; j < 10; j++) {
 			//this is the player case, it is not included in the fellowPlayers so we add it here
 			teamChamps[0] = champSelect(data[j].championId);
@@ -198,6 +183,7 @@ angular.module('leagueApp')
 	$scope.teamColor = function(data) {
 		$scope.gameInfo.lose = 0;
 		$scope.gameInfo.win = 0;
+		var teamColor = [];
 		for (var i = 0; i < 10; i++) {
 			if (data[i].stats.win !== true) {
 				teamColor[i] = '#f9bcbc';
@@ -213,10 +199,10 @@ angular.module('leagueApp')
 	};
 
 	$scope.gameAverages = function(data) {
-		killAverage = 0;
-		deathAverage = 0;
-		assistAverage = 0;
-		csAverage = 0;
+		var killAverage = 0;
+		var deathAverage = 0;
+		var assistAverage = 0;
+		var csAverage = 0;
 		for (var i = 0; i < 10; i++) {
 			if (data[i].stats.championsKilled !== undefined) {
 				killAverage = killAverage + data[i].stats.championsKilled;
@@ -275,8 +261,7 @@ angular.module('leagueApp')
 		$http.get('https://na.api.pvp.net/api/lol/static-data/na/v1.2/item/' + item + '?api_key=' + apiKey).
 		success (function(json) {
 			console.log(json);
-			itemInfo = json;
-			$scope.itemInfo = itemInfo;
+			$scope.itemInfo = json;
 			$('.itemToolTip').hide();
 		    $('.itemToolTip').css({'top': event.pageY + 20, 'left': event.pageX + 5, 'position':'absolute'});
 		    $('.itemToolTip').show();
